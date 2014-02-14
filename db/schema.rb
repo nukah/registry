@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212135057) do
+ActiveRecord::Schema.define(version: 20140213131138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(version: 20140212135057) do
     t.string   "technical_passport_content_type"
     t.integer  "technical_passport_file_size"
     t.datetime "technical_passport_updated_at"
+    t.string   "building_passport_file_name"
+    t.string   "building_passport_content_type"
+    t.integer  "building_passport_file_size"
+    t.datetime "building_passport_updated_at"
   end
 
   add_index "buildings", ["territory_id"], name: "index_buildings_on_territory_id", using: :btree
@@ -71,12 +75,13 @@ ActiveRecord::Schema.define(version: 20140212135057) do
     t.integer  "leaser_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "document_file_name"
-    t.string   "document_content_type"
-    t.integer  "document_file_size"
-    t.datetime "document_updated_at"
+    t.string   "contract_project_file_name"
+    t.string   "contract_project_content_type"
+    t.integer  "contract_project_file_size"
+    t.datetime "contract_project_updated_at"
     t.integer  "duration"
     t.date     "sign_date"
+    t.string   "status"
   end
 
   create_table "entities", force: true do |t|
@@ -138,6 +143,14 @@ ActiveRecord::Schema.define(version: 20140212135057) do
     t.string   "certificate_content_type"
     t.integer  "certificate_file_size"
     t.datetime "certificate_updated_at"
+    t.string   "passport_certificate_file_name"
+    t.string   "passport_certificate_content_type"
+    t.integer  "passport_certificate_file_size"
+    t.datetime "passport_certificate_updated_at"
+    t.string   "license_certificate_file_name"
+    t.string   "license_certificate_content_type"
+    t.integer  "license_certificate_file_size"
+    t.datetime "license_certificate_updated_at"
   end
 
   add_index "territories", ["entity_id"], name: "index_territories_on_entity_id", using: :btree

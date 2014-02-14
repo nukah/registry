@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'rails-i18n', '~> 4.0.0'
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+gem "polyamorous", github: "activerecord-hackery/polyamorous"
 gem 'money-rails'
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 4.0"
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'pg'

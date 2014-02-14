@@ -1,0 +1,72 @@
+ru:
+  details: Подробности
+  territories: Земли
+  buildings: Здания
+  levels: Этажи
+  contracts: Договора
+  leasers: Арендаторы
+  rooms: Помещения
+  activerecord:
+    models:
+      territory: Земля
+      room:
+        one: помещение
+        few: помещения
+        many: помещений
+        other: Помещения
+      purpose: Назначение
+      level:
+        one: Этаж
+        other: Этажи
+      leaser: Арендатор
+      entity:
+        one: объект
+        few: объекта
+        other: Объекты
+      contract:
+        one: договор
+        few: договора
+        other: Договора
+      building:
+        one: здание
+        few: здания
+        other: Здания
+    attributes:
+      territory:
+        name: Название
+        address: Адрес
+        cad: Кадастровый номер
+        space: Общая площадь
+        certificate: Свидетельство
+        entity: Объект
+      room:
+        number: Номер
+        space: Площадь
+      building:
+        name: Название
+        address: Адрес
+        certificate: Свидетельство
+        income: Доход
+        free_space: Свободное пространство
+        level: Этаж
+        building_income: Доход с здания
+      contract:
+        number: Номер
+        rate: Ставка
+        duration: Продолжительность
+        sign_date: Дата подписания
+        leaser: Арендатор
+      leaser:
+        name: Название
+        contacts: Контакты
+        contract: Договор
+      entity:
+        name: Название
+        city: Город
+      purpose:
+        name: Название
+      level:
+        number: Номер
+        space: Площадь
+        free_space: Свободная площадь
+        income: Доход

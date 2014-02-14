@@ -6,7 +6,6 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Rentreport"
-
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -118,7 +117,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.allow_comments = false
+  config.allow_comments = false
   #
   # You can disable the menu item for the comments index page:
   # config.show_comments_in_menu = false
@@ -131,7 +130,7 @@ ActiveAdmin.setup do |config|
   #
   # Enable and disable Batch Actions
   #
-  config.batch_actions = true
+  config.batch_actions = false
 
 
   # == Controller Filters
@@ -140,8 +139,8 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   # config.before_filter :do_something_awesome
-  
-  
+
+
   # == Setting a Favicon
   #
   # config.favicon = '/assets/favicon.ico'
@@ -209,19 +208,19 @@ ActiveAdmin.setup do |config|
   #
   # To disable/customize for the :admin namespace:
   #
-  #   config.namespace :admin do |admin|
-  #
-  #     # Disable the links entirely
-  #     admin.download_links = false
-  #
-  #     # Only show XML & PDF options
-  #     admin.download_links = [:xml, :pdf]
-  #
-  #     # Enable/disable the links based on block
-  #     #   (for example, with cancan)
-  #     admin.download_links = proc { can?(:view_download_links) }
-  #
-  #   end
+  config.namespace :admin do |admin|
+
+    # Disable the links entirely
+    admin.download_links = true
+
+    # Only show XML & PDF options
+    admin.download_links = [:pdf, :xls]
+
+    # Enable/disable the links based on block
+    #   (for example, with cancan)
+    # admin.download_links = proc { can?(:view_download_links) }
+
+  end
 
 
   # == Pagination
