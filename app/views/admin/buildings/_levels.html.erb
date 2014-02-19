@@ -1,0 +1,39 @@
+<% if levels.any? %>
+<div class="index_as_table">
+  <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-number">Номер</th>
+        <th class="col col-space">Площадь</th>
+        <th class="col col-rooms">Количество помещений</th>
+        <th class="col col-passport"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% levels.each do |level| %>
+      <tr id="level_<%= level.id %>">
+        <td class="col col-number"><%= link_to level.number, admin_level_path(level) %></td>
+        <td class="col col-space"><%= space_with_metrics level.space %></td>
+        <td class="col col-rooms"><%= level.rooms.size %></td>
+        <td class="col col-passport">
+          <%= link_to level.floor_plan.url do %>
+            <button type="button" class="btn btn-info btn-sm" disabled="<%= level.floor_plan.exists? %>">
+              <span class="glyphicon glyphicon-file"></span> <%= t(level.floor_plan.name) %>
+            </button>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+
+<% else %>
+<div class="blank_slate_container" id="no_levels">
+  <span class="blank_slate">
+    <span><%= t('activerecord.models.level', count: 10) %> отсутствуют</span>
+    <small><%= link_to 'Добавить этаж', new_admin_level_path(building: building.id) %></small>
+  </span>
+</div>
+<% end %>

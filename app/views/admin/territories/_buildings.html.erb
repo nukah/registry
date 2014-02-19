@@ -1,0 +1,38 @@
+<% if buildings.any? %>
+<div class="index_as_table">
+  <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-name">Название</th>
+        <th class="col col-address">Адрес</th>
+        <th class="col col-certificate">Свидетельство</th>
+        <th class="col col-passport"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% buildings.each do |building| %>
+      <tr id="leaser_<%= building.id %>">
+        <td class="col col-name"><%= link_to building.name, admin_building_path(building) %></td>
+        <td class="col col-address"><%= building.address %></td>
+        <td class="col col-certificate"><%= building.certificate %></td>
+        <td class="col col-passport">
+          <%= link_to building.building_passport.url do %>
+            <button type="button" class="btn btn-info btn-sm" disabled="<%= building.building_passport.exists? %>">
+              <span class="glyphicon glyphicon-file"></span> <%= t(building.building_passport.name) %>
+            </button>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+<% else %>
+<div class="blank_slate_container" id="no_buildings">
+  <span class="blank_slate">
+    <span><%= t('activerecord.models.building', count: 10) %> отсутствуют</span>
+    <small><%= link_to 'Добавить здание', new_admin_building_path(territory: territory.id) %></small>
+  </span>
+</div>
+<% end %>

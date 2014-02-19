@@ -14,6 +14,9 @@ class Level < ActiveRecord::Base
     self.space - self.rooms.to_a.sum(&:space)
   end
 
+  def name
+    number
+  end
   def to_s
     number
   end

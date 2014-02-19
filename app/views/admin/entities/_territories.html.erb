@@ -1,0 +1,48 @@
+<% if territories.any? %>
+<div class="index_as_table">
+  <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-name">Название</th>
+        <th class="col col-address">Адрес</th>
+        <th class="col col-cad">Кадастровый паспорт</th>
+        <th class="col col-space">Площадь</th>
+        <th class="col col-certificate">Свидетельство</th>
+        <th class="col col-files"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% territories.each do |territory| %>
+      <tr id="leaser_<%= territory.id %>">
+        <td class="col col-name"><%= link_to territory.name, admin_territory_path(territory) %></td>
+        <td class="col col-address"><%= territory.address %></td>
+        <td class="col col-cad"><%= territory.cad %></td>
+        <td class="col col-space"><%= space_with_metrics territory.space %></td>
+        <td class="col col-certificate"><%= territory.certificate %></td>
+        <td class="col col-files">
+          <%= link_to territory.passport_certificate.url do %>
+            <button type="button" class="btn btn-info btn-sm" disabled="<%= territory.passport_certificate.exists? %>">
+              <span class="glyphicon glyphicon-file"></span> <%= t(territory.passport_certificate.name) %>
+            </button>
+          <% end %>
+
+          <%= link_to territory.license_certificate.url do %>
+            <button type="button" class="btn btn-info btn-sm" disabled="<%= territory.license_certificate.exists? %>">
+              <span class="glyphicon glyphicon-file"></span> <%= t(territory.license_certificate.name) %>
+            </button>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+<% else %>
+<div class="blank_slate_container" id="no_buildings">
+  <span class="blank_slate">
+    <span><%= t('activerecord.models.territory', count: 10) %> отсутствуют</span>
+    <small><%= link_to 'Добавить землю', new_admin_territory_path(entity: entity.id) %></small>
+  </span>
+</div>
+<% end %>

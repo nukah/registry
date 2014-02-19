@@ -1,11 +1,27 @@
 ru:
+  no_space: отсутствует
+  building_passport: Технический паспорт
+  passport_certificate: Свидетельство
+  license_certificate: Кадастровый паспорт
+  floor_plan: План этажа
+  floors: Этажей
   details: Подробности
   territories: Земли
   buildings: Здания
   levels: Этажи
   contracts: Договора
   leasers: Арендаторы
+  entities: Объекты
   rooms: Помещения
+  headers:
+    territories: Земли
+    buildings: Здания
+    levels: Этажи
+  forms:
+    actions: Действия
+    chapters:
+      main: Основное
+      additional: Дополнительное
   activerecord:
     models:
       territory: Земля
@@ -14,11 +30,21 @@ ru:
         few: помещения
         many: помещений
         other: Помещения
-      purpose: Назначение
+      purpose:
+        one: Назначение
+        few: назначения
+        many: назначений
+        other: Назначения
       level:
-        one: Этаж
-        other: Этажи
-      leaser: Арендатор
+        one: этаж
+        few: этажа
+        many: этажи
+        other: Этаж
+      leaser:
+        one: арендатор
+        few: арендатора
+        many: арендаторов
+        other: Арендатор
       entity:
         one: объект
         few: объекта
