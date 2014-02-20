@@ -6,21 +6,19 @@
         <th class="col col-name">Название</th>
         <th class="col col-address">Адрес</th>
         <th class="col col-certificate">Свидетельство</th>
+        <th class="col col-levels">Этажи</th>
         <th class="col col-passport"></th>
       </tr>
     </thead>
     <tbody>
       <% buildings.each do |building| %>
       <tr id="leaser_<%= building.id %>">
-        <td class="col col-name"><%= link_to building.name, admin_building_path(building) %></td>
+        <td class="col col-name"><%= link_to building.name, edit_admin_building_path(building) %></td>
         <td class="col col-address"><%= building.address %></td>
         <td class="col col-certificate"><%= building.certificate %></td>
+        <td class="col col-levels"><%= link_to building.levels.size, admin_building_path(building) %></td>
         <td class="col col-passport">
-          <%= link_to building.building_passport.url do %>
-            <button type="button" class="btn btn-info btn-sm" disabled="<%= building.building_passport.exists? %>">
-              <span class="glyphicon glyphicon-file"></span> <%= t(building.building_passport.name) %>
-            </button>
-          <% end %>
+          <%= link_to(t(:building_passport), download_building_passport_admin_building_url(building), disabled: !building.building_passport.exists?) %>
         </td>
       </tr>
       <% end %>

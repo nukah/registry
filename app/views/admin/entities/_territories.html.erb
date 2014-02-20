@@ -14,23 +14,14 @@
     <tbody>
       <% territories.each do |territory| %>
       <tr id="leaser_<%= territory.id %>">
-        <td class="col col-name"><%= link_to territory.name, admin_territory_path(territory) %></td>
+        <td class="col col-name"><%= link_to territory.name, edit_admin_territory_path(territory) %></td>
         <td class="col col-address"><%= territory.address %></td>
         <td class="col col-cad"><%= territory.cad %></td>
-        <td class="col col-space"><%= space_with_metrics territory.space %></td>
+        <td class="col col-space"><%= link_to space_with_metrics(territory.space), admin_territory_path(territory) %></td>
         <td class="col col-certificate"><%= territory.certificate %></td>
         <td class="col col-files">
-          <%= link_to territory.passport_certificate.url do %>
-            <button type="button" class="btn btn-info btn-sm" disabled="<%= territory.passport_certificate.exists? %>">
-              <span class="glyphicon glyphicon-file"></span> <%= t(territory.passport_certificate.name) %>
-            </button>
-          <% end %>
-
-          <%= link_to territory.license_certificate.url do %>
-            <button type="button" class="btn btn-info btn-sm" disabled="<%= territory.license_certificate.exists? %>">
-              <span class="glyphicon glyphicon-file"></span> <%= t(territory.license_certificate.name) %>
-            </button>
-          <% end %>
+          <%= link_to(t(:license_certificate), download_license_certificate_admin_territory_url(territory), disabled: !territory.license_certificate.exists?) %>
+          <%= link_to(t(:passport_certificate), download_passport_certificate_admin_territory_url(territory), disabled: !territory.passport_certificate.exists?) %>
         </td>
       </tr>
       <% end %>

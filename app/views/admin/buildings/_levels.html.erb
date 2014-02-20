@@ -5,6 +5,7 @@
       <tr>
         <th class="col col-number">Номер</th>
         <th class="col col-space">Площадь</th>
+        <th class="col col-free_space">Свободная площадь</th>
         <th class="col col-rooms">Количество помещений</th>
         <th class="col col-passport"></th>
       </tr>
@@ -12,15 +13,12 @@
     <tbody>
       <% levels.each do |level| %>
       <tr id="level_<%= level.id %>">
-        <td class="col col-number"><%= link_to level.number, admin_level_path(level) %></td>
+        <td class="col col-number"><%= link_to level.number, edit_admin_level_path(level) %></td>
         <td class="col col-space"><%= space_with_metrics level.space %></td>
-        <td class="col col-rooms"><%= level.rooms.size %></td>
+        <td class="col col-free_space"><%= space_with_metrics level.free_space %></td>
+        <td class="col col-rooms"><%= link_to level.rooms.size, admin_level_path(level) %></td>
         <td class="col col-passport">
-          <%= link_to level.floor_plan.url do %>
-            <button type="button" class="btn btn-info btn-sm" disabled="<%= level.floor_plan.exists? %>">
-              <span class="glyphicon glyphicon-file"></span> <%= t(level.floor_plan.name) %>
-            </button>
-          <% end %>
+          <%= %>
         </td>
       </tr>
       <% end %>

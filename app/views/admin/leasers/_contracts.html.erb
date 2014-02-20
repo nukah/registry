@@ -1,0 +1,38 @@
+<% if contracts.any? %>
+<div class="index_as_table">
+  <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-number">Номер</th>
+        <th class="col col-room">Помещение</th>
+        <th class="col col-rate">Ставка</th>
+        <th class="col col-duration">Продолжительность</th>
+        <th class="col col-sign_date">Дата подписания</th>
+        <th class="col col-status">Статус</th>
+        <th class="col col-income">Доход</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contracts.each do |contract| %>
+      <tr id="contract<%= contract.id %>">
+        <td class="col col-number"><%= contract.number %></td>
+        <td class="col col-room"><%= link_to contract.room.name, admin_room_path(contract.room) %></td>
+        <td class="col col-rate"><%= number_to_currency contract.rate %></td>
+        <td class="col col-duration"><%= contract.duration %></td>
+        <td class="col col-sign_date"><%= contract.sign_date.strftime('%d-%m-%Y') if contract.sign_date %></td>
+        <td class="col col-status"><%= contract.status %></td>
+        <td class="col col-income"><%= number_to_currency contract.income %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+<% else %>
+<div class="blank_slate_container" id="no_contracts">
+  <span class="blank_slate">
+    <span><%= t('activerecord.models.contract', count: 10) %> отсутствуют</span>
+    <small><%= link_to 'Добавить договор', new_admin_contract_path(leaser: leaser.id) %></small>
+  </span>
+</div>
+<% end %>

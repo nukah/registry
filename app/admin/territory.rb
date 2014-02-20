@@ -1,23 +1,39 @@
 ActiveAdmin.register Territory do
-  scope :all, :default => true
   menu priority: 11
   controller do
     def permitted_params
-      params.permit(:territory => [:name, :address, :cad, :space, :certificate])
+      params.permit(:territory => [:name, :address, :cad, :space, :certificate, :passport_certificate, :license_certificate])
     end
   end
+
+  member_action :download_passport_certificate, method: :get do
+    t = Territory.find(params[:id])
+    send_file t.passport_certificate.path, type: t.passport_certificate_content_type, filename: t.passport_certificate_download_name
+  end
+  member_action :download_license_certificate, method: :get do
+    t = Territory.find(params[:id])
+    send_file t.license_certificate.url, type: t.license_certificate_content_type, filename: t.license_certificate_download_name
+  end
+
   show do |territory|
     render "buildings", buildings: territory.buildings
   end
+
   index do
     column :name do |territory|
       link_to territory.name, edit_admin_territory_path(territory)
     end
     column :address
     column :cad
-    column :space
+    column :space do |territory|
+      space_with_metrics territory.space
+    end
     column t('headers.buildings') do |territory|
       link_to territory.buildings.size, admin_territory_path(territory)
+    end
+    column t(:license_certificate) do |territory|
+      raw [link_to(t(:license_certificate), download_license_certificate_admin_territory_url(territory), disabled: !territory.license_certificate.exists?),
+      link_to(t(:passport_certificate), download_passport_certificate_admin_territory_url(territory), disabled: !territory.passport_certificate.exists?)].join(' ')
     end
   end
 

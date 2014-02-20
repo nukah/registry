@@ -20,9 +20,18 @@ ActiveAdmin.register Building do
       end
     end
   end
+
+  member_action :download_building_passport, method: :get do
+    building = Building.find(params[:id])
+    send_file building.building_passport.path,
+              type: building.building_passport_content_type,
+              filename: building.building_passport_download_name
+  end
+
   show do |building|
     render "levels", levels: building.levels, building: building
   end
+
   filter :territory, as: :select
 
   index do
@@ -40,7 +49,11 @@ ActiveAdmin.register Building do
     column t('floors') do |building|
       link_to building.levels.size, admin_building_path(building)
     end
+    column t(:building_passport) do |building|
+      link_to(t(:building_passport), download_building_passport_admin_building_url(building), disabled: !building.building_passport.exists?)
+    end
   end
+
   form do |f|
     f.inputs t("forms.chapters.main") do
       f.input :territory, as: :select

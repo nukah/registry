@@ -1,3 +1,4 @@
+require 'paperclip'
 module Paperclip
   class PDFPNGProcessor < Processor
 
@@ -10,8 +11,9 @@ module Paperclip
 
       @current_format      = File.extname(@file.path)
       @basename            = File.basename(@file.path, @current_format)
-
-      raise PaperclipError("Wrong format for PDF convertor") if @format != /pdf/
+      if @format != /pdf/
+        raise Paperclip::Error, "Wrong format for PDF convertor"
+      end
     end
 
     def make
@@ -29,7 +31,7 @@ module Paperclip
 
         success = Paperclip.run("gs", parameters, :source => "#{File.expand_path(src.path)}", :dest => File.expand_path(dst.path))
       rescue PaperclipCommandLineError => e
-        raise PaperclipError, "There was an error processing the thumbnail for #{@basename}" if @whiny
+        raise Error, "There was an error processing the thumbnail for #{@basename}" if @whiny
       end
       dst
     end

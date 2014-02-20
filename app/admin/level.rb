@@ -1,6 +1,6 @@
 ActiveAdmin.register Level do
   config.filters = false
-  menu priority: 13
+  menu false
   controller do
     before_action :predefine_building, only: [:new]
 
@@ -13,9 +13,14 @@ ActiveAdmin.register Level do
         @level = Level.new()
       end
     end
+
     def permitted_params
       params.permit(:level => [:number, :space, :building])
     end
+  end
+
+  show do |level|
+    render "rooms", rooms: level.rooms, level: level
   end
 
   form do |f|
@@ -30,10 +35,5 @@ ActiveAdmin.register Level do
     end
 
     f.actions
-  end
-  sidebar I18n.t(:details), label: I18n.t(:details), only: [:show, :edit] do
-    ul do
-      li link_to(t(:rooms), admin_level_rooms_path(level))
-    end
   end
 end

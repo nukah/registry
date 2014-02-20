@@ -1,0 +1,32 @@
+<% if rooms.any? %>
+<div class="index_as_table">
+  <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-number">Номер</th>
+        <th class="col col-space">Площадь</th>
+        <th class="col col-leaser">Арендатор</th>
+        <th class="col col-income">Доход</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% rooms.each do |room| %>
+      <tr id="room_<%= room.id %>">
+        <td class="col col-number"><%= room.number %></td>
+        <td class="col col-space"><%= space_with_metrics room.space %></td>
+        <td class="col col-leaser"><%= link_to room.leaser.name, admin_leaser_path(room.leaser) %></td>
+        <td class="col col-income"><%= number_to_currency room.contract.income %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+<% else %>
+<div class="blank_slate_container" id="no_buildings">
+  <span class="blank_slate">
+    <span><%= t('activerecord.models.room', count: 10) %> отсутствуют</span>
+    <small><%= link_to 'Добавить помещение', new_admin_room_path(level: level.id) %></small>
+  </span>
+</div>
+<% end %>
