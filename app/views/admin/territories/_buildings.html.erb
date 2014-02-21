@@ -18,7 +18,7 @@
         <td class="col col-certificate"><%= building.certificate %></td>
         <td class="col col-levels"><%= link_to building.levels.size, admin_building_path(building) %></td>
         <td class="col col-passport">
-          <%= link_to(t(:building_passport), download_building_passport_admin_building_url(building), disabled: !building.building_passport.exists?) %>
+          <%= download_links :building_passport, building %>
         </td>
       </tr>
       <% end %>

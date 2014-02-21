@@ -20,8 +20,7 @@
         <td class="col col-space"><%= link_to space_with_metrics(territory.space), admin_territory_path(territory) %></td>
         <td class="col col-certificate"><%= territory.certificate %></td>
         <td class="col col-files">
-          <%= link_to(t(:license_certificate), download_license_certificate_admin_territory_url(territory), disabled: !territory.license_certificate.exists?) %>
-          <%= link_to(t(:passport_certificate), download_passport_certificate_admin_territory_url(territory), disabled: !territory.passport_certificate.exists?) %>
+          <%= download_links [:license_certificate, :passport_certificate], territory %>
         </td>
       </tr>
       <% end %>

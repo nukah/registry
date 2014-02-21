@@ -32,8 +32,7 @@ ActiveAdmin.register Territory do
       link_to territory.buildings.size, admin_territory_path(territory)
     end
     column t(:license_certificate) do |territory|
-      raw [link_to(t(:license_certificate), download_license_certificate_admin_territory_url(territory), disabled: !territory.license_certificate.exists?),
-      link_to(t(:passport_certificate), download_passport_certificate_admin_territory_url(territory), disabled: !territory.passport_certificate.exists?)].join(' ')
+      download_links([:license_certificate, :passport_certificate], territory)
     end
   end
 

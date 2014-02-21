@@ -10,6 +10,7 @@
         <th class="col col-sign_date">Дата подписания</th>
         <th class="col col-status">Статус</th>
         <th class="col col-income">Доход</th>
+        <th class="col col-files">Документы</th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +21,9 @@
         <td class="col col-rate"><%= number_to_currency contract.rate %></td>
         <td class="col col-duration"><%= contract.duration %></td>
         <td class="col col-sign_date"><%= contract.sign_date.strftime('%d-%m-%Y') if contract.sign_date %></td>
-        <td class="col col-status"><%= contract.status %></td>
+        <td class="col col-status"><%=  contract.status %></td>
         <td class="col col-income"><%= number_to_currency contract.income %></td>
+        <td class="col col-files"></td>
       </tr>
       <% end %>
     </tbody>

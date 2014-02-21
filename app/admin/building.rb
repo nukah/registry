@@ -49,8 +49,8 @@ ActiveAdmin.register Building do
     column t('floors') do |building|
       link_to building.levels.size, admin_building_path(building)
     end
-    column t(:building_passport) do |building|
-      link_to(t(:building_passport), download_building_passport_admin_building_url(building), disabled: !building.building_passport.exists?)
+    column do |building|
+      download_links :building_passport, building
     end
   end
 

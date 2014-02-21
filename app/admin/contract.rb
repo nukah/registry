@@ -3,10 +3,18 @@ ActiveAdmin.register Contract do
   #belongs_to :leaser
 
   member_action :download_contract_project, method: :get do
-    contract = Contract.find(params[:id])
-    send_file contract.contract_project.path,
-              type: contract.contract_project_content_type,
-              filename: contract.contract_project_download_name
+    c = Contract.find(params[:id])
+    require 'zip'
+    temp = Tempfile.new("#{Time.now.to_i}_#{number}")
+    Zip::ZipOutputStream.open(temp) do |zip|
+      c.contract_files.map(&:file).select(*:exists?).each { |file|
+        filename = File.basename(file.path)
+        zip.put_next_entry filename
+        zip.print IO.read(file.path)
+      }
+    end
+    send_file temp.path, type: 'application/zip', filename: "contract_#{number}_#{leaser.name}_#{room.number}_#{sign_date.strftime('%d-%m-%Y')}.zip"
+    temp.delete
   end
 
   index do
