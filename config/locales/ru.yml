@@ -1,5 +1,6 @@
 ru:
   no_space: отсутствует
+  no_duration_set: Не установлено
   building_passport: Технический паспорт
   passport_certificate: Кадастровый паспорт
   license_certificate: Свидетельство
@@ -13,15 +14,57 @@ ru:
   leasers: Арендаторы
   entities: Объекты
   rooms: Помещения
+  contract_attachment_name: Наименование документа
+  meters:
+    one: "%{count} метр"
+    few: "%{count} метра"
+    many: "%{count} метров"
   headers:
     territories: Земли
     buildings: Здания
     levels: Этажи
+    contract_attachments: Документы к договору
   forms:
     actions: Действия
     chapters:
       main: Основное
       additional: Дополнительное
+
+  enumerize:
+    contract:
+      status:
+        novel: Новый договор
+        approval: На рассмотрении
+        signed: Подписан
+        finished: Завершён
+
+  formtastic:
+    titles:
+      contracts: "Договоры"
+      contract_attachments: Документы к договору
+
+    labels:
+      contract:
+        room: Помещение
+        leaser: Арендатор
+        rate: Ставка
+        number: Номер договора
+        sign_date: Дата подписания
+        status: Текущий статус
+        duration: Продолжительность(в месяцах)
+        new:
+          title: Создать новый договор
+        edit:
+          title: Изменить договор
+      contract_attachment:
+        file: Документ
+    actions:
+      create: "Создать %{model}"
+      update: "Сохранить"
+      reset: "Сбросить"
+      cancel: "Отменить"
+      destroy: "Удалить"
+
   activerecord:
     models:
       territory: Земля
@@ -57,6 +100,11 @@ ru:
         one: здание
         few: здания
         other: Здания
+      contract_attachment:
+        one: документ
+        few: документа
+        many: документов
+        other: Документы
     attributes:
       territory:
         name: Название
@@ -82,6 +130,7 @@ ru:
         duration: Продолжительность
         sign_date: Дата подписания
         leaser: Арендатор
+        status: Статус
       leaser:
         name: Название
         contacts: Контакты

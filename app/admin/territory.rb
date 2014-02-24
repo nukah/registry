@@ -43,12 +43,12 @@ ActiveAdmin.register Territory do
   filter :certificate
 
   form do |f|
-    f.inputs t('forms.territory.main') do
+    f.inputs t('forms.chapters.main') do
       f.input :entity, as: :select
       f.input :name
       f.input :space
     end
-    f.inputs t('forms.territory.additional') do
+    f.inputs t('forms.chapters.additional') do
       f.input :address
       f.input :cad
       f.input :certificate

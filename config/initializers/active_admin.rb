@@ -211,7 +211,7 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
 
     # Disable the links entirely
-    admin.download_links = true
+    admin.download_links = false
 
     # Only show XML & PDF options
     admin.download_links = [:pdf, :xls]

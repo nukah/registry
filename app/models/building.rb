@@ -8,7 +8,7 @@ class Building < ActiveRecord::Base
   monetize :income, :as => "building_income"
 
   def display_name
-    "#{territory.name} (#{name})"
+    territory.present? ? "#{territory.name} (#{self.name})" : name
   end
 
   # Суммарная площадь пространства

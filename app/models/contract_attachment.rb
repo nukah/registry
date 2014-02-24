@@ -1,4 +1,4 @@
-class ContractFile < ActiveRecord::Base
+class ContractAttachment < ActiveRecord::Base
   belongs_to :contract
 
   after_save :update_parent

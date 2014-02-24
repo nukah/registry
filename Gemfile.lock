@@ -98,6 +98,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    enumerize (0.7.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.0.2)
     formtastic (2.3.0.rc2)
@@ -217,6 +219,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.1.0)
   coffee-rails (~> 4.0.0)
+  enumerize
   jbuilder (~> 1.2)
   jquery-rails
   money-rails
@@ -226,7 +229,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails-i18n (~> 4.0.0)
   ransack!
-  rubyzip
+  rubyzip (~> 1.1)
   sass-rails (~> 4.0.0)
   sdoc
   turbolinks
