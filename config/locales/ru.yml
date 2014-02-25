@@ -4,6 +4,8 @@ ru:
   building_passport: Технический паспорт
   passport_certificate: Кадастровый паспорт
   license_certificate: Свидетельство
+  contract_documents: Документы к договору
+  rent_menu: Аренда
   floor_plan: План этажа
   floors: Этажей
   details: Подробности
@@ -131,6 +133,9 @@ ru:
         sign_date: Дата подписания
         leaser: Арендатор
         status: Статус
+        attachment:
+          name: Название
+          size: Размер файла
       leaser:
         name: Название
         contacts: Контакты

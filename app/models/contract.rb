@@ -3,7 +3,7 @@ class Contract < ActiveRecord::Base
   belongs_to :room
   belongs_to :leaser
   has_many :attachments, dependent: :destroy, class_name: ContractAttachment
-  accepts_nested_attributes_for :attachments, :allow_destroy => true
+  accepts_nested_attributes_for :attachments, allow_destroy: true
   monetize :income, :as => "contract_income"
 
   enumerize :status, in: { novel: 0, approval: 1, signed:2, finished: 3 }, default: :novel

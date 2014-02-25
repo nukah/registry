@@ -1,6 +1,6 @@
 ActiveAdmin.register Building do
   scope :all, :default => true
-  menu priority: 12
+  menu priority: 12, parent: 'rent'
   config.filters = true
 
   controller do

@@ -1,5 +1,5 @@
 ActiveAdmin.register Leaser do
-  menu priority: 15
+  menu priority: 15, parent: 'rent'
   filter :contracts, as: :select
   filter :name, as: :string
 

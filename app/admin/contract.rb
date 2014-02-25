@@ -1,11 +1,11 @@
 require 'zip'
 ActiveAdmin.register Contract do
-  menu priority: 16
+  menu priority: 16, parent: 'rent'
   #belongs_to :leaser
   controller do
     def permitted_params
       params.permit(contract: [:number, :room_id, :rate, :leaser_id, :sign_date, :duration, :status, :attachments,
-                    attachments_attributes: [:file]
+                    attachments_attributes: [:file, :_destroy, :id]
                     ])
     end
   end
@@ -37,44 +37,23 @@ ActiveAdmin.register Contract do
       row :status do
         status_tag contract.status_text
       end
-      panel t('headers.contract_attachments') do
-        contract.attachments.each do |a|
-          div do
-            span do
-             "name: #{a.file_file_name}"
-            end
-            span do
-              "size: #{number_to_human_size(a.file_file_size)}"
-            end
+    end
+    if contract.attachments.any?
+      panel "Files" do
+        table_for contract.attachments do
+          column t('activerecord.attributes.contract.attachment.name') do |a|
+            a.file_file_name
+          end
+          column t('activerecord.attributes.contract.attachment.size') do |a|
+            number_to_human_size(a.file_file_size)
           end
         end
+        link_to 'Download all', download_contract_project_admin_contract_path(contract)
       end
     end
   end
 
-  form multipart: true do |f|
-    f.inputs t('forms.chapters.main') do
-      f.input :room
-      f.input :leaser
-      f.input :rate, as: :number
-    end
-    f.inputs t('forms.chapters.additional') do
-      f.input :number
-      f.input :sign_date, as: :datepicker
-      f.input :status, as: :select
-      f.input :duration, as: :number
-    end
-    f.has_many :attachments do |ff|
-      if ff.object.present?
-        ff.template.inspect
-      else
-        ff.input :file, as: :file, hint: "#{ff.object.file_file_name}"
-      end
-      ff.input :_destroy, as: :boolean, required: false, label: t('formtastic.actions.destroy')
-    end
-
-    f.actions
-  end
+  form partial: "edit_contract"
 
   index do
     column :room do |contract|
@@ -93,14 +72,15 @@ ActiveAdmin.register Contract do
     column :duration do |contract|
       duration_with_metrics contract.duration
     end
-    column do |contract|
-      link_to t(:contract_project), download_contract_project_admin_contract_path(contract)
+    column t('contract_documents') do |contract|
+      link_to contract.attachments.size, download_contract_project_admin_contract_path(contract) if contract.attachments.any?
     end
   end
 
   filter :leaser
   filter :number, as: :string
   filter :rate, as: :numeric
+  filter :sign_date
   filter :status, as: :select
   filter :duration
 end

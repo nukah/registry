@@ -1,5 +1,5 @@
 ActiveAdmin.register Purpose do
-  menu priority: 20
+  menu priority: 20, parent: 'rent'
   config.filters = false
   controller do
     def permitted_params

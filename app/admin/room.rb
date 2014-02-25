@@ -1,5 +1,5 @@
 ActiveAdmin.register Room do
-  menu priority: 14
+  menu priority: 14, parent: 'rent'
   controller do
     before_action :predefine_level, only: [:new]
 

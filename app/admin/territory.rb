@@ -1,5 +1,5 @@
 ActiveAdmin.register Territory do
-  menu priority: 11
+  menu priority: 11, parent: 'rent'
   controller do
     def permitted_params
       params.permit(:territory => [:name, :address, :cad, :space, :certificate, :passport_certificate, :license_certificate])

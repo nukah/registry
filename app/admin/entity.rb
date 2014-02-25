@@ -1,6 +1,6 @@
 ActiveAdmin.register Entity do
   config.filters = false
-  menu priority: 10
+  menu priority: 10, parent: 'rent'
   controller do
     def permitted_params
       params.permit(:entity => [:name, :city])

@@ -1,0 +1,19 @@
+<%= semantic_form_for [:admin, @contract], html: {multipart: true}, builder: ActiveAdmin::FormBuilder do |f|
+  f.semantic_errors *f.object.errors.keys
+  f.inputs t('forms.chapters.main') do
+    f.input :room
+    f.input :leaser
+    f.input :rate, as: :number
+    f.input :number
+  end
+  f.inputs t('forms.chapters.additional') do
+    f.input :sign_date, as: :date_select
+    f.input :status, as: :select
+    f.input :duration, as: :number
+    f.has_many :attachments do |ff|
+      ff.input :file, as: :file, hint: "#{t(:contract_attachment_name)}: #{ff.object.file_file_name} (#{number_to_human_size(ff.object.file_file_size)})"
+      ff.input :_destroy, as: :boolean, required: :false, label: t('formtastic.actions.destroy')
+    end
+  end
+  f.actions
+end %>
