@@ -1,4 +1,5 @@
 <% if levels.any? %>
+<h3>Список этажей</h3>
 <div class="index_as_table">
   <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
     <thead>
@@ -13,10 +14,10 @@
     <tbody>
       <% levels.each do |level| %>
       <tr id="level_<%= level.id %>">
-        <td class="col col-number"><%= link_to level.number, edit_admin_level_path(level) %></td>
+        <td class="col col-number"><%= link_to level.number, admin_level_path(level) %></td>
         <td class="col col-space"><%= space_with_metrics level.space %></td>
         <td class="col col-free_space"><%= space_with_metrics level.free_space %></td>
-        <td class="col col-rooms"><%= link_to level.rooms.size, admin_level_path(level) %></td>
+        <td class="col col-rooms"><%= level.rooms.size %></td>
         <td class="col col-passport">
           <%= %>
         </td>

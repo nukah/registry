@@ -23,16 +23,41 @@ ActiveAdmin.register Room do
   filter :number
   filter :space
 
+  show do |room|
+    attributes_table do
+      row :number
+      row :space do
+        space_with_metrics room.space
+      end
+      row :level
+      row :leaser
+    end
+  end
+
+  form do |f|
+    f.inputs t("forms.chapters.main") do
+      f.input :number
+      f.input :space
+      unless params[:level]
+        f.input :building, as: :select, collection: Building.all
+      end
+      f.input :level
+    end
+  end
+
   index do
     column :number
     column :contract_number do |room|
-      room.contract.number
+      link_to room.contract.number, admin_room_path(room)
     end
     column :space do |room|
       space_with_metrics room.space
     end
     column :leaser do |room|
       link_to room.leaser.name, admin_leaser_path(room.leaser)
+    end
+    column :building do |room|
+      room.level.building.name
     end
     column :income do |room|
       number_to_currency room.contract.income

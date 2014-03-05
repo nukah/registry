@@ -1,4 +1,5 @@
 <% if contracts.any? %>
+<h3>Список договоров</h3>
 <div class="index_as_table">
   <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
     <thead>
@@ -16,12 +17,12 @@
     <tbody>
       <% contracts.each do |contract| %>
       <tr id="contract<%= contract.id %>">
-        <td class="col col-number"><%= contract.number %></td>
+        <td class="col col-number"><%= link_to contract.number, admin_contract_path(contract) %></td>
         <td class="col col-room"><%= link_to contract.room.name, admin_room_path(contract.room) %></td>
         <td class="col col-rate"><%= number_to_currency contract.rate %></td>
         <td class="col col-duration"><%= contract.duration %></td>
         <td class="col col-sign_date"><%= contract.sign_date.strftime('%d-%m-%Y') if contract.sign_date %></td>
-        <td class="col col-status"><%=  contract.status %></td>
+        <td class="col col-status"><%= content_tag(:span, contract.status_text, class: 'status_tag') %></td>
         <td class="col col-income"><%= number_to_currency contract.income %></td>
         <td class="col col-files"></td>
       </tr>

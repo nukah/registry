@@ -1,8 +1,9 @@
 ActiveAdmin.register Building do
   scope :all, :default => true
   menu priority: 12, parent: 'rent'
-  config.filters = true
-
+  action_item only: :show do
+    link_to(t('active_admin.add_model', model: t('activerecord.models.level', count: 1)), new_admin_level_path(building: resource.id))
+  end
   controller do
     def permitted_params
       params.permit(:territory => [:name, :address, :cad, :space, :certificate, :building_passport])
@@ -36,7 +37,7 @@ ActiveAdmin.register Building do
 
   index do
     column :name do |building|
-      link_to building.name, edit_admin_building_path(building)
+      link_to building.name, admin_building_path(building)
     end
     column :address
     column :certificate
@@ -47,7 +48,7 @@ ActiveAdmin.register Building do
       space_with_metrics building.free_space
     end
     column t('floors') do |building|
-      link_to building.levels.size, admin_building_path(building)
+      building.levels.size
     end
     column do |building|
       download_links :building_passport, building
@@ -63,7 +64,7 @@ ActiveAdmin.register Building do
 
     f.inputs t("forms.chapters.additional") do
       f.input :certificate, as: :number
-      f.input :building_passport, as: :file
+      f.input :building_passport, as: :file, hint: f.template.image_tag(f.object.building_passport.url(:small), class: 'attachment_image')
     end
 
     f.actions

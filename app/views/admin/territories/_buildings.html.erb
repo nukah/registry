@@ -1,4 +1,5 @@
 <% if buildings.any? %>
+<h3>Список зданий</h3>
 <div class="index_as_table">
   <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
     <thead>
@@ -13,10 +14,10 @@
     <tbody>
       <% buildings.each do |building| %>
       <tr id="leaser_<%= building.id %>">
-        <td class="col col-name"><%= link_to building.name, edit_admin_building_path(building) %></td>
+        <td class="col col-name"><%= link_to building.name, admin_building_path(building) %></td>
         <td class="col col-address"><%= building.address %></td>
         <td class="col col-certificate"><%= building.certificate %></td>
-        <td class="col col-levels"><%= link_to building.levels.size, admin_building_path(building) %></td>
+        <td class="col col-levels"><%= building.levels.size %></td>
         <td class="col col-passport">
           <%= download_links :building_passport, building %>
         </td>

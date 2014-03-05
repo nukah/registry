@@ -6,6 +6,7 @@ ru:
   license_certificate: Свидетельство
   contract_documents: Документы к договору
   rent_menu: Аренда
+  admin_menu: Администрирование
   floor_plan: План этажа
   floors: Этажей
   details: Подробности
@@ -17,15 +18,29 @@ ru:
   entities: Объекты
   rooms: Помещения
   contract_attachment_name: Наименование документа
+
+  active_admin:
+    add_model: "Добавить %{model}"
+    new_model: "Создать"
+    edit_model: "Изменить %{model}"
+    create_model: "Создать %{model}"
+    update_model: "Изменить %{model}"
+    delete_model: "Удалить"
+  roles:
+    admin: Администратор
+    user: Пользователь
+
   meters:
     one: "%{count} метр"
     few: "%{count} метра"
     many: "%{count} метров"
+
   headers:
     territories: Земли
     buildings: Здания
     levels: Этажи
     contract_attachments: Документы к договору
+
   forms:
     actions: Действия
     chapters:
@@ -60,6 +75,9 @@ ru:
           title: Изменить договор
       contract_attachment:
         file: Документ
+      room:
+        building: Здание
+        level: Этаж
     actions:
       create: "Создать %{model}"
       update: "Сохранить"
@@ -69,7 +87,11 @@ ru:
 
   activerecord:
     models:
-      territory: Земля
+      territory:
+        one: земля
+        few: земли
+        many: земель
+        other: Земля
       room:
         one: помещение
         few: помещения
@@ -113,11 +135,17 @@ ru:
         address: Адрес
         cad: Кадастровый номер
         space: Общая площадь
+        license_certificate: Свидетельство
+        passport_certificate: Кадастровый паспорт
         certificate: Свидетельство
         entity: Объект
       room:
         number: Номер
         space: Площадь
+        contract_number: Номер договора
+        leaser: Арендатор
+        income: Доход
+        building: Здание
       building:
         name: Название
         address: Адрес
@@ -126,8 +154,10 @@ ru:
         free_space: Свободное пространство
         level: Этаж
         building_income: Доход с здания
+        territory: Земля
+        building_passport: Технический паспорт
       contract:
-        number: Номер
+        number: Номер договора
         rate: Ставка
         duration: Продолжительность
         sign_date: Дата подписания
@@ -140,6 +170,7 @@ ru:
         name: Название
         contacts: Контакты
         contract: Договор
+        contracts: Договоры
       entity:
         name: Название
         city: Город

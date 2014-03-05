@@ -1,9 +1,14 @@
 class Building < ActiveRecord::Base
+  fieldset = [:space, :address, :name, :income]
   belongs_to :territory
   has_many :levels
   has_attached_file :building_passport,
-                    url: "/storage/documents/:class/:id/:filename.:extension",
-                    path: ":rails_root/public/storage/documents/:class/:id/:filename.:extension"
+                    url: "/storage/documents/:class/:id/:filename",
+                    styles: {
+                      small: ['150x150>', :png]
+                    },
+                    path: ":rails_root/public/storage/documents/:class/:id/:filename",
+                    default_url: ActionController::Base.helpers.asset_path('no_document.png')
   validates_attachment_content_type :building_passport, content_type: /(pdf)|(png)|(tiff)|(jpeg|jpg)/
   monetize :income, :as => "building_income"
 
@@ -27,5 +32,9 @@ class Building < ActiveRecord::Base
 
   def building_passport_download_name
     "building_passport_#{self.territory.name}_#{self.name}_#{DateTime.now.strftime("%d-%m-%y")}#{File.extname(self.building_passport_file_name)}"
+  end
+
+  def self.fieldset
+    ['name','address', 'certificate']
   end
 end

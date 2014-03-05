@@ -9,11 +9,11 @@ ActiveAdmin.register Leaser do
 
   index do
     column :name do |leaser|
-      link_to leaser.name, edit_admin_leaser_path(leaser)
+      link_to leaser.name, admin_leaser_path(leaser)
     end
     column :contacts
     column t('contracts') do |leaser|
-      link_to leaser.contracts.size, admin_leaser_path(leaser)
+      leaser.contracts.size
     end
   end
 end

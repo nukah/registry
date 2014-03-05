@@ -62,10 +62,10 @@ ActiveAdmin.setup do |config|
   # method in a before filter of all controller actions to
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
-  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
 
   # You can customize your CanCan Ability class name here.
-  # config.cancan_ability_class = "Ability"
+  config.cancan_ability_class = "Ability"
 
   # You can specify a method to be called on unauthorized access.
   # This is necessary in order to prevent a redirect loop which happens
@@ -214,9 +214,12 @@ ActiveAdmin.setup do |config|
     admin.download_links = false
 
     # Only show XML & PDF options
-    admin.download_links = [:pdf, :xls]
-    admin.build_menu do |menu|
-      menu.add label: -> { I18n.t('rent_menu') }, :priority => 0, id: 'rent'
+    #admin.download_links = [:pdf, :xls]
+    admin.build_menu :default do |menu|
+      menu.add label: -> { I18n.t('rent_menu') }, priority: 10, id: 'rent'
+    end
+    admin.build_menu :default do |menu|
+      menu.add label: -> { I18n.t('admin_menu') }, priority: 11, id: 'admin', if: -> { current_admin_user.admin? }
     end
     # Enable/disable the links based on block
     #   (for example, with cancan)

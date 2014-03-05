@@ -35,7 +35,7 @@ ActiveAdmin.register Contract do
         duration_with_metrics contract.duration
       end
       row :status do
-        status_tag contract.status_text
+        status_tag(contract.status_text, :ok)
       end
     end
     if contract.attachments.any?
@@ -63,7 +63,7 @@ ActiveAdmin.register Contract do
       link_to contract.number, admin_contract_path(contract)
     end
     column :rate do |contract|
-      number_to_currency contract.income
+      number_to_currency contract.rate
     end
     column :sign_date
     column :status do |contract|

@@ -43,6 +43,15 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/jenseng/hair_trigger.git
+  revision: 14e0e9b5768f2be94b3781aae40ada6de50c5a33
+  specs:
+    hairtrigger (0.2.4)
+      activerecord (>= 2.3)
+      ruby2ruby (~> 2.0.6)
+      ruby_parser (~> 3.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,10 +90,12 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -128,6 +139,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
     monetize (0.1.4)
@@ -147,6 +159,12 @@ GEM
       mime-types
     pg (0.17.1)
     polyglot (0.3.3)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -172,6 +190,11 @@ GEM
       json (~> 1.4)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    ruby2ruby (2.0.7)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
+    ruby_parser (3.2.2)
+      sexp_processor (~> 4.1)
     rubyzip (1.1.0)
     sass (3.2.14)
     sass-rails (4.0.1)
@@ -181,6 +204,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    sexp_processor (4.4.1)
+    slop (3.4.7)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -218,14 +243,17 @@ DEPENDENCIES
   annotate!
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.1.0)
+  cancan
   coffee-rails (~> 4.0.0)
   enumerize
+  hairtrigger!
   jbuilder (~> 1.2)
   jquery-rails
   money-rails
   paperclip (~> 4.0)
   pg
   polyamorous!
+  pry-rails
   rails (= 4.0.2)
   rails-i18n (~> 4.0.0)
   ransack!

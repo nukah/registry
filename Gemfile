@@ -15,6 +15,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'enumerize'
+gem 'cancan'
+gem 'hairtrigger', github: 'jenseng/hair_trigger'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
@@ -34,4 +36,7 @@ gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+group :development do
+  gem 'annotate', github: 'ctran/annotate_models'
+  gem 'pry-rails'
+end

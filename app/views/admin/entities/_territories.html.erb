@@ -1,4 +1,5 @@
 <% if territories.any? %>
+<h3>Список земель</h3>
 <div class="index_as_table">
   <table border="0" cellspacing="0" cellpadding="0" class="index_table index" paginator="true">
     <thead>
@@ -14,10 +15,10 @@
     <tbody>
       <% territories.each do |territory| %>
       <tr id="leaser_<%= territory.id %>">
-        <td class="col col-name"><%= link_to territory.name, edit_admin_territory_path(territory) %></td>
+        <td class="col col-name"><%= link_to territory.name, admin_territory_path(territory) %></td>
         <td class="col col-address"><%= territory.address %></td>
         <td class="col col-cad"><%= territory.cad %></td>
-        <td class="col col-space"><%= link_to space_with_metrics(territory.space), admin_territory_path(territory) %></td>
+        <td class="col col-space"><%= space_with_metrics(territory.space) %></td>
         <td class="col col-certificate"><%= territory.certificate %></td>
         <td class="col col-files">
           <%= download_links [:license_certificate, :passport_certificate], territory %>

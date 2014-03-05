@@ -1,8 +1,22 @@
 ActiveAdmin.register Territory do
   menu priority: 11, parent: 'rent'
+  action_item only: :show do
+    link_to(t('active_admin.add_model', model: t('activerecord.models.building', count: 1)), new_admin_building_path(territory: resource.id))
+  end
   controller do
     def permitted_params
       params.permit(:territory => [:name, :address, :cad, :space, :certificate, :passport_certificate, :license_certificate])
+    end
+    before_action :predefine_entity, only: [:new]
+
+    def predefine_entity
+      e = params[:entity]
+      if e && Entity.exists?(e)
+        @territory = Territory.new()
+        @territory.entity = Entity.find(e)
+      else
+        @territory = Territory.new()
+      end
     end
   end
 
@@ -21,7 +35,7 @@ ActiveAdmin.register Territory do
 
   index do
     column :name do |territory|
-      link_to territory.name, edit_admin_territory_path(territory)
+      link_to territory.name, admin_territory_path(territory)
     end
     column :address
     column :cad
@@ -29,7 +43,7 @@ ActiveAdmin.register Territory do
       space_with_metrics territory.space
     end
     column t('headers.buildings') do |territory|
-      link_to territory.buildings.size, admin_territory_path(territory)
+      territory.buildings.size
     end
     column t(:license_certificate) do |territory|
       download_links([:license_certificate, :passport_certificate], territory)
@@ -52,8 +66,8 @@ ActiveAdmin.register Territory do
       f.input :address
       f.input :cad
       f.input :certificate
-      f.input :passport_certificate, as: :file
-      f.input :license_certificate, as: :file
+      f.input :passport_certificate, as: :file, hint: f.template.image_tag(f.object.passport_certificate.url(:small), class: 'attachment_image')
+      f.input :license_certificate, as: :file, hint: f.template.image_tag(f.object.license_certificate.url(:small), class: 'attachment_image')
     end
     f.actions do
       f.action :submit

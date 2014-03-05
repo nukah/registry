@@ -10,4 +10,15 @@
  *
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap-custom";
+body { padding-top: 70px; }
+.form-element-group input:not([type=checkbox]) {
+float: right
+}
+.form-element-group select {
+width: 150px;
+float: right;
+}
+.form-element .panel-body {
+  display: none;
+}

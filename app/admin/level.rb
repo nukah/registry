@@ -1,6 +1,9 @@
 ActiveAdmin.register Level do
   config.filters = false
   menu false
+  action_item only: :show do
+    link_to(t('active_admin.add_model', model: t('activerecord.models.room', count: 1)), new_admin_room_path(level: resource.id))
+  end
   controller do
     before_action :predefine_building, only: [:new]
 
@@ -14,9 +17,18 @@ ActiveAdmin.register Level do
       end
     end
 
-    def permitted_params
-      params.permit(:level => [:number, :space, :building])
+    def index
+      redirect_to admin_buildings_path
     end
+
+    def permitted_params
+      params.permit(:level => [:number, :space, :building_id])
+    end
+  end
+
+  collection_action :building_levels, method: :get do
+    levels = Hash[Level.of_building(params[:building_id]).map { |l| [l.title,l.id]}].to_json
+    render json: levels
   end
 
   show do |level|
@@ -31,7 +43,7 @@ ActiveAdmin.register Level do
     end
 
     f.inputs t("forms.chapters.additional") do
-      f.input :floor_plan, as: :file
+      f.input :floor_plan, as: :file, hint: f.template.image_tag(f.object.floor_plan.url(:small), class: 'attachment_image')
     end
 
     f.actions

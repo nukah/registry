@@ -8,4 +8,8 @@ class Leaser < ActiveRecord::Base
   def income
     self.contracts.to_a.sum(&:income)
   end
+
+  def self.fieldset
+    ['name', 'contacts']
+  end
 end

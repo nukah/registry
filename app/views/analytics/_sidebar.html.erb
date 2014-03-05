@@ -1,0 +1,187 @@
+<form class="form-horizontal" role="form">
+<fieldset>
+  <div class="panel panel-default form-element" id="object-group-0">
+    <div class="panel-heading">
+    <label class="checkbox inline" for="object-group-0">
+      <input type="checkbox" name="enable_object"> Объект
+    </label>
+  </div>
+  <div class="panel-body">
+    <div class="form-element-group row" id="element_object_name">
+      <div class="col-xs-1">
+        <input type="checkbox" name="enable_object_name">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_object_name">Название</label>
+      </div>
+      <div class="col-xs-4">
+        <input id="search_object_name" name="search_object_name" type="text" placeholder="" class="input-large search-query">
+      </div>
+    </div>
+    <div class="form-element-group row" id="element_object_city">
+      <div class="col-xs-1">
+        <input type="checkbox" name="enable_object_city">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_object_city">Город</label>
+      </div>
+      <div class="col-xs-4">
+        <input id="search_object_name" name="search_object_name" type="text" placeholder="" class="input-large search-query">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default form-element" id="object-group-1">
+  <div class="panel-heading">
+    <label class="checkbox inline" for="object-group-1">
+      <input type="checkbox" name="enable_territory"> Земля
+    </label>
+  </div>
+  <div class="panel-body">
+    <div class="form-element-group row" id="element_territory_address">
+      <div class="col-xs-1">
+        <input type="checkbox" name="enable_territory_name">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_territory_name">Название</label>
+      </div>
+      <div class="col-xs-4">
+        <input id="search_territory_name" name="search_territory_name" type="text" placeholder="" class="input-sm search-query">
+      </div>
+    </div>
+    <div class="form-element-group row" id="element_territory_address">
+      <div class="col-xs-1">
+        <input type="checkbox" name="element_territory_address">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_territory_address">Адрес</label>
+      </div>
+      <div class="col-xs-4">
+        <input id="search_territory_address" name="search_territory_address" type="text" placeholder="" class="input-sm search-query">
+      </div>
+    </div>
+    <div class="form-element-group row" id="element_territory_license_number">
+      <div class="col-xs-1">
+        <input type="checkbox" name="enable_territory_license_number">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_territory_license_number">Кадастровый номер</label>
+      </div>
+      <div class="col-xs-4">
+        <input id="search_territory_license_number" name="search_territory_license_number" type="text" placeholder="" class="input-small search-query">
+      </div>
+    </div>
+    <div class="form-element-group row" id="element_territory_space">
+      <div class="col-xs-1">
+        <input type="checkbox" name="enable_territory_space">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_territory_space">Площадь</label>
+      </div>
+      <div class="col-xs-4">
+        <select class="form-control input-xs" name="search_territory_space_operand">
+          <option>>=</option>
+          <option><=</option>
+          <option>==</option>
+        </select>
+        <input id="search_territory_space" name="search_territory_space" type="text" placeholder="" class="input-medium search-query">
+      </div>
+    </div>
+    <div class="form-element-group row" id="element_territory_documents">
+      <div class="col-xs-1">
+        <input type="checkbox" name="enable_territory_documents">
+      </div>
+      <div class="col-xs-4">
+        <label class="control-label" for="search_territory_documents">Документы</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default form-element" id="object-group-2">
+  <div class="panel-heading">
+    <label class="checkbox inline" for="object-group-2">
+      <input type="checkbox" name="enable_building"> Здание
+    </label>
+  </div>
+  <div class="panel-body">
+    <div class="form-element-group" id="element_building_name">
+      <input type="checkbox" name="enable_building_name">
+      <label class="control-label" for="search_building_name">Название</label>
+      <input id="search_building_name" name="search_building_name" type="text" placeholder="" class="input-medium search-query">
+    </div>
+    <div class="form-element-group" id="element_building_address">
+      <input type="checkbox" name="element_building_address">
+      <label class="control-label" for="search_building_address">Адрес</label>
+      <input id="search_building_address" name="search_building_address" type="text" placeholder="" class="input-medium search-query">
+    </div>
+    <div class="form-element-group" id="element_building_space">
+      <input type="checkbox" name="enable_building_space">
+      <label class="control-label" for="search_building_space">Площадь</label>
+      <select class="form-control input-sm" name="search_building_space_operand">
+        <option>>=</option>
+        <option><=</option>
+        <option>==</option>
+      </select>
+      <input id="search_building_space" name="search_building_space" type="text" placeholder="" class="input-medium search-query">
+    </div>
+    <div class="form-element-group" id="element_building_certificate">
+      <input type="checkbox" name="enable_building_certificate">
+      <label class="control-label" for="search_building_certificate">Кадастровый номер</label>
+      <input id="search_territory_license_number" name="search_territory_license_number" type="text" placeholder="" class="input-medium search-query">
+    </div>
+    <div class="form-element-group" id="element_building_documents">
+      <input type="checkbox" name="enable_building_documents">
+      <label class="control-label" for="search_building_documents">Документы</label>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default form-element" id="object-group-3">
+  <div class="panel-heading">
+    <label class="checkbox inline" for="object-group-3">
+      <input type="checkbox" name="enable_room"> Помещение
+    </label>
+  </div>
+  <div class="panel-body">
+    <div class="form-element-group" id="element_room_number">
+      <input type="checkbox" name="enable_room_number">
+      <label class="control-label" for="search_room_number">Номер</label>
+      <input id="search_room_number" name="search_room_number" type="text" placeholder="" class="input-medium search-query">
+    </div>
+    <div class="form-element-group" id="element_room_space">
+      <input type="checkbox" name="element_room_space">
+      <label class="control-label" for="search_room_space">Площадь</label>
+      <select class="form-control input-sm" name="search_room_space_operand">
+        <option>>=</option>
+        <option><=</option>
+        <option>==</option>
+      </select>
+      <input id="search_room_space" name="search_room_space" type="text" placeholder="" class="input-medium search-query">
+    </div>
+    <div class="form-element-group" id="element_room_purpose">
+      <input type="checkbox" name="enable_room_purpose">
+      <label class="control-label" for="search_room_purpose">Назначение</label>
+      <select class="form-control" name="search_room_purpose">
+        <option>1</option>
+      </select>
+    </div>
+    <div class="form-element-group" id="element_room_level">
+      <input type="checkbox" name="enable_room_level">
+      <label class="control-label" for="search_room_level">Этаж</label>
+      <input id="search_room_level" name="search_room_level" type="text" placeholder="" class="input-medium search-query">
+    </div>
+  </div>
+</div>
+<!-- Button (Double) -->
+<div class="control-group">
+  <label class="control-label" for="submit"></label>
+  <div class="controls">
+    <button id="submit" class="btn btn-warning">Поиск</button>
+    <button id="cancel" class="btn btn-success">Очистить</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

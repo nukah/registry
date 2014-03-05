@@ -1,5 +1,6 @@
 class Contract < ActiveRecord::Base
   extend Enumerize
+
   belongs_to :room
   belongs_to :leaser
   has_many :attachments, dependent: :destroy, class_name: ContractAttachment
@@ -18,5 +19,9 @@ class Contract < ActiveRecord::Base
 
   def contract_project_download_name
     "contract_#{leaser.name}_#{room.number}_#{DateTime.now.strftime("%d-%m-%y")}#{File.extname(contract_project_file_name)}"
+  end
+
+  def self.fieldset
+    ['number', 'income', 'duration', 'sign_date', 'rate', 'status']
   end
 end
