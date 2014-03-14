@@ -8,7 +8,7 @@ class AnalyticsController < ApplicationController
 
   end
 
-  def data
+  def search
 
   end
 

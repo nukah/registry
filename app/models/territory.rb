@@ -2,6 +2,15 @@ class Territory < ActiveRecord::Base
   belongs_to :entity
   has_many :buildings
 
+  searchable do
+    string :territory_name, using: :name
+    string :territory_address, using: :address
+    integer :territory_cad, using: :cad
+    integer :territory_space, using: :space
+    integer :territory_certificate, using: :certificate
+    integer :entity, references: Entity, using: :entity_id
+  end
+
   has_attached_file :passport_certificate,
                     url: "/storage/documents/:class/:id/:filename",
                     styles: {

@@ -4,6 +4,11 @@ class Leaser < ActiveRecord::Base
 
   monetize :income, :as => "leaser_income"
 
+  searchable do
+    text :name
+    text :contacts
+  end
+
   # Суммарный доход от арендатора
   def income
     self.contracts.to_a.sum(&:income)

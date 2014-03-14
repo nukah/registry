@@ -7,8 +7,8 @@ $(document).ready ->
     checkbox = $(this).find("input")[0]
     checkbox.checked = !checkbox.checked
 
-  $(".controls button").click (ev) ->
-    ev.preventDefault()
+  # $(".controls button").click (ev) ->
+  #   ev.preventDefault()
 
   $(".controls button[id=submit]").click (ev) ->
 

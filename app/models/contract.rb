@@ -5,9 +5,20 @@ class Contract < ActiveRecord::Base
   belongs_to :leaser
   has_many :attachments, dependent: :destroy, class_name: ContractAttachment
   accepts_nested_attributes_for :attachments, allow_destroy: true
-  monetize :income, :as => "contract_income"
-
   enumerize :status, in: { novel: 0, approval: 1, signed:2, finished: 3 }, default: :novel
+  searchable do
+    integer :number
+    integer :income do
+      self.room.space * self.rate
+    end
+    integer :duration
+    time :sign_date
+    integer :rate
+    integer :status
+    integer :room_id, references: Room
+    integer :leaser_id, references: Leaser
+  end
+
   # Доход от аренды помещения
   def income
     self.room.space * self.rate

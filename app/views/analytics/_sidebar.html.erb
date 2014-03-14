@@ -1,4 +1,4 @@
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="/search" method="post" name="search">
 <fieldset>
   <div class="panel panel-default form-element" id="object-group-0">
     <div class="panel-heading">
@@ -180,6 +180,7 @@
   <div class="controls">
     <button id="submit" class="btn btn-warning">Поиск</button>
     <button id="cancel" class="btn btn-success">Очистить</button>
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   </div>
 </div>
 

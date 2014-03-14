@@ -1,7 +1,21 @@
 class Building < ActiveRecord::Base
-  fieldset = [:space, :address, :name, :income]
   belongs_to :territory
   has_many :levels
+  searchable do
+    integer :building_space do
+      levels.to_a.sum(&:space)
+    end
+    integer :building_free_space do
+      levels.to_a.sum(&:free_space)
+    end
+    text :building_address, using: :address
+    text :building_name, using: :name
+    integer :building_income do
+      Contract.where(room_id: levels.map { |l| l.rooms.map(&:id) }.flatten).to_a.sum(&:income)
+    end
+    string :territory, references: Territory, using: :territory_id
+  end
+
   has_attached_file :building_passport,
                     url: "/storage/documents/:class/:id/:filename",
                     styles: {

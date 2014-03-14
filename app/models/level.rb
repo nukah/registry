@@ -2,6 +2,16 @@ class Level < ActiveRecord::Base
   belongs_to :building
   has_many :rooms
   scope :of_building, ->(building) { where('building_id = ?', building)}
+
+  searchable do
+    integer :level_number, using: :number
+    integer :level_space, using: :space
+    boolean :level_plan do
+      self.floor_plan.present?
+    end
+    integer :building, references: Building, using: :building_id
+  end
+
   has_attached_file :floor_plan,
                     url: "/storage/documents/:class/:id/:filename",
                     styles: {

@@ -5,13 +5,14 @@ module Rentreport
     end
 
     def construct
-      result = @models.inject({}) { |result, model|
-        result.merge(
-          model.to_s.downcase => Hash[model.columns.select { |field|
-          model.fieldset.include?(field.name) if model.respond_to?('fieldset') && model.fieldset.any? }.map { |field| [field.name, field.type]}]
-        )
+      block = @models.inject({}) { |hash, model|
+        properties = model.columns.select { |field|
+          model.fieldset.include?(field.name) if model.respond_to?('fieldset') && model.fieldset.any? }.inject({}) { |props, field|
+            props.merge({field.name => {title: I18n.t("activerecord.attributes.#{model.name.downcase}.#{field.name}") , type: field.type}})
+        }
+        hash.merge({model.to_s.downcase => { type: 'object', title: I18n.t("form_model_titles.#{model.name.downcase}"), properties: properties } })
       }
-      result.delete_if { |k,v| v.empty? }
+      block
     end
   end
 end

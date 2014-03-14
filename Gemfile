@@ -3,8 +3,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem 'rails-i18n', '~> 4.0.0'
-gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
-gem "polyamorous", github: "activerecord-hackery/polyamorous"
+# Search modules
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
+gem 'sunspot_rails'
+gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+gem 'datagrid'
+
 gem 'money-rails'
 gem "paperclip", "~> 4.0"
 gem 'bootstrap-sass', '~> 3.1.0'
@@ -16,11 +20,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'enumerize'
 gem 'cancan'
-gem 'hairtrigger', github: 'jenseng/hair_trigger'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 group :doc do
@@ -39,4 +41,5 @@ gem 'unicorn'
 group :development do
   gem 'annotate', github: 'ctran/annotate_models'
   gem 'pry-rails'
+  gem 'sunspot_solr'
 end

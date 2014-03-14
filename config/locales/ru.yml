@@ -19,6 +19,14 @@ ru:
   rooms: Помещения
   contract_attachment_name: Наименование документа
 
+  form_model_titles:
+    territory: Земля
+    entity: Объект
+    building: Здание
+    contract: Договор
+    leaser: Арендатор
+    room: Помещение
+    level: Этаж
   active_admin:
     add_model: "Добавить %{model}"
     new_model: "Создать"
