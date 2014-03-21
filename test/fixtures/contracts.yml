@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: contracts
+#
+#  id                            :integer          not null, primary key
+#  number                        :integer
+#  rate                          :float
+#  room_id                       :integer
+#  leaser_id                     :integer
+#  created_at                    :datetime
+#  updated_at                    :datetime
+#  contract_project_file_name    :string(255)
+#  contract_project_content_type :string(255)
+#  contract_project_file_size    :integer
+#  contract_project_updated_at   :datetime
+#  duration                      :integer
+#  sign_date                     :date
+#  status                        :integer          default(0)
+#  income                        :float
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

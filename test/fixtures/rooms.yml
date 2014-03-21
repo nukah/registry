@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: rooms
+#
+#  id          :integer          not null, primary key
+#  number      :integer
+#  space       :integer
+#  level_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  building_id :integer
+#
+# Indexes
+#
+#  index_rooms_on_building_id  (building_id)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: contract_attachments
+#
+#  id                :integer          not null, primary key
+#  contract_id       :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  file_file_name    :string(255)
+#  file_content_type :string(255)
+#  file_file_size    :integer
+#  file_updated_at   :datetime
+#
+
 class ContractAttachment < ActiveRecord::Base
   belongs_to :contract
 

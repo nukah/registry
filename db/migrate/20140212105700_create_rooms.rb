@@ -3,7 +3,7 @@ class CreateRooms < ActiveRecord::Migration
     create_table :rooms do |t|
       t.integer :number
       t.integer :space
-      t.belongs_to :level
+      t.references :level
 
       t.timestamps
     end

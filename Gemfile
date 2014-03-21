@@ -7,6 +7,7 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 gem 'sunspot_rails'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+gem 'squeel'
 gem 'datagrid'
 
 gem 'money-rails'

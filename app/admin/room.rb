@@ -42,13 +42,16 @@ ActiveAdmin.register Room do
         f.input :building, as: :select, collection: Building.all
       end
       f.input :level
+      f.actions
     end
   end
 
   index do
-    column :number
+    column :number do |room|
+      link_to room.number, admin_room_path(room)
+    end
     column :contract_number do |room|
-      link_to room.contract.number, admin_room_path(room)
+      link_to room.contract.number, admin_contract_path(room.contract)
     end
     column :space do |room|
       space_with_metrics room.space

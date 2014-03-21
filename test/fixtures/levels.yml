@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: levels
+#
+#  id                      :integer          not null, primary key
+#  number                  :integer
+#  space                   :integer
+#  building_id             :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#  floor_plan_file_name    :string(255)
+#  floor_plan_content_type :string(255)
+#  floor_plan_file_size    :integer
+#  floor_plan_updated_at   :datetime
+#  free_space              :integer          default(0)
+#
+# Indexes
+#
+#  index_levels_on_building_id  (building_id)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

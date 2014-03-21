@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226084908) do
+ActiveRecord::Schema.define(version: 20140321112448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,9 @@ ActiveRecord::Schema.define(version: 20140226084908) do
     t.string   "building_passport_content_type"
     t.integer  "building_passport_file_size"
     t.datetime "building_passport_updated_at"
+    t.integer  "total_space",                     default: 0
+    t.integer  "free_space",                      default: 0
+    t.float    "income"
   end
 
   add_index "buildings", ["territory_id"], name: "index_buildings_on_territory_id", using: :btree
@@ -103,6 +106,7 @@ ActiveRecord::Schema.define(version: 20140226084908) do
     t.integer  "duration"
     t.date     "sign_date"
     t.integer  "status",                        default: 0
+    t.float    "income"
   end
 
   create_table "entities", force: true do |t|
@@ -129,6 +133,7 @@ ActiveRecord::Schema.define(version: 20140226084908) do
     t.string   "floor_plan_content_type"
     t.integer  "floor_plan_file_size"
     t.datetime "floor_plan_updated_at"
+    t.integer  "free_space",              default: 0
   end
 
   add_index "levels", ["building_id"], name: "index_levels_on_building_id", using: :btree
@@ -145,7 +150,10 @@ ActiveRecord::Schema.define(version: 20140226084908) do
     t.integer  "level_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "building_id"
   end
+
+  add_index "rooms", ["building_id"], name: "index_rooms_on_building_id", using: :btree
 
   create_table "territories", force: true do |t|
     t.string   "name"

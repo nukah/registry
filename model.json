@@ -1,0 +1,273 @@
+{
+  "dimensions": [
+    {
+      "name": "buildings",
+      "label": "Здание",
+      "levels": [
+        {
+          "name": "name",
+          "label": "Название",
+          "attributes": ["building_name"]
+        },
+        {
+          "name": "address",
+          "label": "Адрес",
+          "attributes": ["building_address"]
+        },
+        {
+          "name": "certificate",
+          "label": "",
+          "attributes": ["building_certificate"]
+        },
+        {
+          "name": "income",
+          "label": "",
+          "attributes": ["building_income"]
+        },
+        {
+          "name": "total_space",
+          "label": "",
+          "attributes": ["building_total_space"]
+        },
+        {
+          "name": "free_space",
+          "label": "",
+          "attributes": ["building_free_space"]
+        }
+      ]
+    },
+    {
+      "name": "entities",
+      "label": "Объект",
+      "levels": [
+        {
+          "name": "name",
+          "label": "Название",
+          "attributes": ["entity_name"]
+        },
+        {
+          "name": "city",
+          "label": "Адрес",
+          "attributes": ["entity_city"]
+        }
+      ]
+    },
+    {
+      "name": "territories",
+      "label": "Земля",
+      "levels": [
+        {
+          "name": "name",
+          "label": "Название",
+          "attributes": ["territory_name"]
+        },
+        {
+          "name": "address",
+          "label": "Адрес",
+          "attributes": ["territory_address"]
+        },
+        {
+          "name": "cad",
+          "label": "Кадастровый паспорт",
+          "attributes": ["territory_cad"]
+        },
+        {
+          "name": "space",
+          "label": "Площадь",
+          "attributes": ["territory_space"]
+        },
+        {
+          "name": "certificate",
+          "label": "Свидетельство",
+          "attributes": ["territory_certificate"]
+        }
+      ]
+    },
+    {
+      "name": "levels",
+      "label": "Этаж",
+      "levels": [
+        {
+          "name": "number",
+          "label": "Номер этажа",
+          "attributes": ["level_number"]
+        },
+        {
+          "name": "space",
+          "label": "Плошадь этажа",
+          "attributes": ["level_space"]
+        },
+        {
+          "name": "free_space",
+          "label": "Свободная площадь",
+          "attributes": ["level_free_space"]
+        }
+      ]
+    },
+    {
+      "name": "rooms",
+      "label": "Помещение",
+      "levels": [
+        {
+          "name": "number",
+          "label": "Номер помещения",
+          "attributes": ["room_number"]
+        },
+        {
+          "name": "space",
+          "label": "Плошадь помещения",
+          "attributes": ["room_space"]
+        }
+      ]
+    },
+    {
+      "name": "leasers",
+      "label": "Арендатор",
+      "levels": [
+        {
+          "name": "name",
+          "label": "Название арендатора",
+          "attributes": ["leaser_name"]
+        },
+        {
+          "name": "contacts",
+          "label": "Контакты арендатора",
+          "attributes": ["leaser_contacts"]
+        }
+      ]
+    },
+    {
+      "name": "contracts",
+      "label": "Договор",
+      "levels": [
+        {
+          "name": "number",
+          "label": "Номер договора",
+          "attributes": ["contract_number"]
+        },
+        {
+          "name": "rate",
+          "label": "Ставка",
+          "attributes": ["contract_rate"]
+        },
+        {
+          "name": "sign_date",
+          "label": "Дата подписания",
+          "attributes": ["contract_sign_date"]
+        },
+        {
+          "name": "duration",
+          "label": "Длительность",
+          "attributes": ["contract_duration"]
+        },
+        {
+          "name": "status",
+          "label": "Статус",
+          "attributes": ["contract_status"]
+        },
+        {
+          "name": "income",
+          "label": "Ежегодный доход",
+          "attributes": ["contract_income"]
+        }
+      ]
+    }
+  ],
+  "cubes": [
+    {
+      "name": "common_data",
+      "dimensions": ["entities", "territories", "buildings", "levels", "rooms", "leasers", "contracts"],
+      "aggregates": [
+        {
+          "name": "contract_income_sum",
+          "function": "sum",
+          "measure": "contract_income"
+        },
+        {
+          "name": "room_space_sum",
+          "function": "sum",
+          "measure": "room_space"
+        },
+        {
+          "name": "level_space_sum",
+          "function": "sum",
+          "measure": "level_space"
+        },
+        {
+          "name": "level_free_space_sum",
+          "function": "sum",
+          "measure": "level_free_space"
+        }
+      ],
+      "measures": [
+        {
+          "name": "contract_rate",
+          "label": ""
+        },
+        {
+          "name": "level_space",
+          "label": ""
+        },
+        {
+          "name": "territory_space",
+          "label": ""
+        },
+        {
+          "name": "room_space",
+          "label": ""
+        }
+      ],
+      "joins": [
+        {
+          "master": "rooms.level_id",
+          "detail": "levels.id"
+        },
+        {
+          "master": "rooms.building_id",
+          "detail": "buildings.id"
+        },
+        {
+          "master": "buildings.territory_id",
+          "detail": "territories.id"
+        },
+        {
+          "master": "territories.entity_id",
+          "detail": "entities.id"
+        },
+        {
+          "master": "contracts.room_id",
+          "detail": "rooms.id"
+        },
+        {
+          "master": "contracts.leaser_id",
+          "detail": "leasers.id"
+        }
+      ],
+      "mappings": {
+        "entities.name": "entity_name",
+        "entities.city": "entity_city",
+        "buildings.name": "building_name",
+        "buildings.address": "building_address",
+        "buildings.certificate": "building_certificate",
+        "buildings.income": "building_income",
+        "buildings.total_space": "building_total_space",
+        "buildings.free_space": "building_free_space",
+        "territories.name": "territory_name",
+        "territories.address": "territory_address",
+        "territories.cad": "territory_cad",
+        "territories.space": "territory_space",
+        "territories.certificate": "territory_certificate",
+        "levels.number": "level_number",
+        "levels.space": "level_space",
+        "levels.free_space": "level_free_space",
+        "rooms.number": "room_number",
+        "rooms.space": "room_space ",
+        "contracts.number": "contract_number",
+        "contracts.rate": "contract_rate",
+        "contracts.income": "contract_income",
+        "leasers.name": "leaser_name",
+        "leasers.contacts": "leaser_contacts"
+      }
+    }
+  ]
+}
