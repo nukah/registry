@@ -85,11 +85,13 @@ CREATE TRIGGER update_contract_income_on_space AFTER UPDATE
 CREATE OR REPLACE function update_level_free_space_on_update () RETURNS trigger AS $update_rooms_space$
 DECLARE
   rooms_space INTEGER;
+  space_current INTEGER;
   free_space_i INTEGER;
 BEGIN
   SELECT SUM(space) into rooms_space FROM rooms WHERE level_id = OLD.level_id;
   IF FOUND THEN
-    free_space_i = NEW.space - rooms_space;
+    SELECT space into space_current FROM levels WHERE id = OLD.level_id;
+    free_space_i = space_current - rooms_space;
     UPDATE levels SET free_space = free_space_i WHERE id = OLD.level_id;
   END IF;
   RETURN NULL;
@@ -99,5 +101,5 @@ $update_rooms_space$ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS update_rooms_space ON rooms;
 CREATE TRIGGER update_rooms_space AFTER UPDATE
   ON rooms FOR EACH ROW
-  WHEN(OLD.* IS DISTINCT FROM NEW.*)
+  WHEN(OLD.space IS DISTINCT FROM NEW.space)
   EXECUTE PROCEDURE update_level_free_space_on_update ();
