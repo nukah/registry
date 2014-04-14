@@ -30,7 +30,7 @@ ActiveAdmin.register Territory do
   end
 
   show do |territory|
-    render "buildings", buildings: territory.buildings
+    render "buildings", buildings: territory.buildings, territory: territory
   end
 
   index do
