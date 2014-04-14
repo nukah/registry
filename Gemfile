@@ -5,10 +5,7 @@ gem 'rails', '4.0.2'
 gem 'rails-i18n', '~> 4.0.0'
 # Search modules
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
-gem 'sunspot_rails'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
-gem 'squeel'
-gem 'datagrid'
 
 gem 'money-rails'
 gem "paperclip", "~> 4.0"
