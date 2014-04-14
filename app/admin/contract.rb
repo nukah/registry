@@ -1,7 +1,6 @@
 require 'zip'
 ActiveAdmin.register Contract do
   menu priority: 16, parent: 'rent'
-  #belongs_to :leaser
   controller do
     def permitted_params
       params.permit(contract: [:number, :room_id, :rate, :leaser_id, :sign_date, :duration, :status, :attachments,

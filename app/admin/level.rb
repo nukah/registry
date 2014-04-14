@@ -5,8 +5,11 @@ ActiveAdmin.register Level do
     link_to(t('active_admin.add_model', model: t('activerecord.models.room', count: 1)), new_admin_room_path(level: resource.id))
   end
   controller do
-    before_action :predefine_building, only: [:new]
+    def permitted_params
+      params.permit(:level => [:number, :space, :building_id])
+    end
 
+    before_action :predefine_building, only: [:new]
     def predefine_building
       b = params[:building]
       if b && Building.exists?(b)
@@ -19,10 +22,6 @@ ActiveAdmin.register Level do
 
     def index
       redirect_to admin_buildings_path
-    end
-
-    def permitted_params
-      params.permit(:level => [:number, :space, :building_id])
     end
   end
 

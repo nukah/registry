@@ -5,7 +5,7 @@ ActiveAdmin.register Territory do
   end
   controller do
     def permitted_params
-      params.permit(:territory => [:name, :address, :cad, :space, :certificate, :passport_certificate, :license_certificate])
+      params.permit(:territory => [:name, :address, :cad, :space, :certificate, :passport_certificate, :license_certificate, :entity_id])
     end
     before_action :predefine_entity, only: [:new]
 
