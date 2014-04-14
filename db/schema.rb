@@ -57,32 +57,18 @@ ActiveRecord::Schema.define(version: 20140321112448) do
     t.integer  "territory_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "technical_passport_file_name"
-    t.string   "technical_passport_content_type"
-    t.integer  "technical_passport_file_size"
-    t.datetime "technical_passport_updated_at"
     t.string   "building_passport_file_name"
     t.string   "building_passport_content_type"
     t.integer  "building_passport_file_size"
     t.datetime "building_passport_updated_at"
-    t.integer  "total_space",                     default: 0
-    t.integer  "free_space",                      default: 0
+    t.integer  "total_space",                    default: 0
+    t.integer  "free_space",                     default: 0
     t.float    "income"
   end
 
   add_index "buildings", ["territory_id"], name: "index_buildings_on_territory_id", using: :btree
 
   create_table "contract_attachments", force: true do |t|
-    t.integer  "contract_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
-  end
-
-  create_table "contract_files", force: true do |t|
     t.integer  "contract_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -103,7 +89,7 @@ ActiveRecord::Schema.define(version: 20140321112448) do
     t.string   "contract_project_content_type"
     t.integer  "contract_project_file_size"
     t.datetime "contract_project_updated_at"
-    t.integer  "duration"
+    t.integer  "duration",                      default: 0
     t.date     "sign_date"
     t.integer  "status",                        default: 0
     t.float    "income"
@@ -164,14 +150,6 @@ ActiveRecord::Schema.define(version: 20140321112448) do
     t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cad_passport_file_name"
-    t.string   "cad_passport_content_type"
-    t.integer  "cad_passport_file_size"
-    t.datetime "cad_passport_updated_at"
-    t.string   "certificate_file_name"
-    t.string   "certificate_content_type"
-    t.integer  "certificate_file_size"
-    t.datetime "certificate_updated_at"
     t.string   "passport_certificate_file_name"
     t.string   "passport_certificate_content_type"
     t.integer  "passport_certificate_file_size"

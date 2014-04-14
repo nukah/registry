@@ -13,7 +13,7 @@
 #  contract_project_content_type :string(255)
 #  contract_project_file_size    :integer
 #  contract_project_updated_at   :datetime
-#  duration                      :integer
+#  duration                      :integer          default(0)
 #  sign_date                     :date
 #  status                        :integer          default(0)
 #  income                        :float

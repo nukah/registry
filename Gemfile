@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 gem 'rails-i18n', '~> 4.0.0'
 # Search modules
-gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
-gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+#gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
+#gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 
 gem 'money-rails'
 gem "paperclip", "~> 4.0"
@@ -19,7 +19,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'enumerize'
 gem 'cancan'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'

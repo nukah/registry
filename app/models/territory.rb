@@ -11,14 +11,6 @@
 #  entity_id                         :integer
 #  created_at                        :datetime
 #  updated_at                        :datetime
-#  cad_passport_file_name            :string(255)
-#  cad_passport_content_type         :string(255)
-#  cad_passport_file_size            :integer
-#  cad_passport_updated_at           :datetime
-#  certificate_file_name             :string(255)
-#  certificate_content_type          :string(255)
-#  certificate_file_size             :integer
-#  certificate_updated_at            :datetime
 #  passport_certificate_file_name    :string(255)
 #  passport_certificate_content_type :string(255)
 #  passport_certificate_file_size    :integer

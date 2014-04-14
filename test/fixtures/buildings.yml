@@ -2,24 +2,20 @@
 #
 # Table name: buildings
 #
-#  id                              :integer          not null, primary key
-#  name                            :string(255)
-#  address                         :string(255)
-#  certificate                     :string(255)
-#  territory_id                    :integer
-#  created_at                      :datetime
-#  updated_at                      :datetime
-#  technical_passport_file_name    :string(255)
-#  technical_passport_content_type :string(255)
-#  technical_passport_file_size    :integer
-#  technical_passport_updated_at   :datetime
-#  building_passport_file_name     :string(255)
-#  building_passport_content_type  :string(255)
-#  building_passport_file_size     :integer
-#  building_passport_updated_at    :datetime
-#  total_space                     :integer          default(0)
-#  free_space                      :integer          default(0)
-#  income                          :float
+#  id                             :integer          not null, primary key
+#  name                           :string(255)
+#  address                        :string(255)
+#  certificate                    :string(255)
+#  territory_id                   :integer
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  building_passport_file_name    :string(255)
+#  building_passport_content_type :string(255)
+#  building_passport_file_size    :integer
+#  building_passport_updated_at   :datetime
+#  total_space                    :integer          default(0)
+#  free_space                     :integer          default(0)
+#  income                         :float
 #
 # Indexes
 #

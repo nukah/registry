@@ -12,10 +12,10 @@ ActiveAdmin.register Territory do
     def predefine_entity
       e = params[:entity]
       if e && Entity.exists?(e)
-        @territory = Territory.new()
+        @territory = Territory.new
         @territory.entity = Entity.find(e)
       else
-        @territory = Territory.new()
+        @territory = Territory.new
       end
     end
   end
