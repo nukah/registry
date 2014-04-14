@@ -48,7 +48,7 @@ class Territory < ActiveRecord::Base
   has_attached_file :license_certificate,
                     url: "/storage/documents/:class/:id/:filename",
                     styles: {
-                      small: '120x120>'
+                      small: ['120x120>', :png]
                     },
                     path: ":rails_root/public/storage/documents/:class/:id/:filename",
                     keep_old_files: true,
