@@ -4,7 +4,7 @@ class CreateRooms < ActiveRecord::Migration
       t.integer :number
       t.integer :space
       t.references :level
-
+      t.references :building, index: true
       t.timestamps
     end
   end

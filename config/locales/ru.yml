@@ -11,11 +11,17 @@ ru:
   floors: Этажей
   details: Подробности
   territories: Земли
+  territory: Земля
   buildings: Здания
+  building: Здание
   levels: Этажи
+  level: Этаж
   contracts: Договора
+  contract: Договор
   leasers: Арендаторы
+  leaser: Арендатор
   entities: Объекты
+  entity: Объект
   rooms: Помещения
   contract_attachment_name: Наименование документа
 
@@ -42,6 +48,10 @@ ru:
     one: "%{count} метр"
     few: "%{count} метра"
     many: "%{count} метров"
+  hectars:
+    one: "%{count} Га"
+    few: "%{count} Га"
+    many: "%{count} Га"
 
   headers:
     territories: Земли

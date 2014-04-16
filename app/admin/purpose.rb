@@ -1,11 +1,13 @@
 ActiveAdmin.register Purpose do
   menu priority: 20, parent: 'rent'
   config.filters = false
+
   controller do
     def permitted_params
       params.permit(:purpose => [:name])
     end
   end
+
   index do
     column :name
     default_actions

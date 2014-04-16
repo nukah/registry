@@ -40,7 +40,10 @@ ActiveAdmin.register Territory do
     column :address
     column :cad
     column :space do |territory|
-      space_with_metrics territory.space
+      space_with_metrics_hectars territory.space
+    end
+    column t(:entity) do |territory|
+      territory.entity.name
     end
     column t('headers.buildings') do |territory|
       territory.buildings.size
@@ -55,8 +58,10 @@ ActiveAdmin.register Territory do
   filter :cad
   filter :space
   filter :certificate
+  filter :entity
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs t('forms.chapters.main') do
       f.input :entity, as: :select
       f.input :name

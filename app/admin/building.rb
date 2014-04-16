@@ -4,9 +4,10 @@ ActiveAdmin.register Building do
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.level', count: 1)), new_admin_level_path(building: resource.id))
   end
+
   controller do
     def permitted_params
-      params.permit(:territory => [:name, :address, :cad, :space, :certificate, :building_passport, :territory_id])
+      params.permit(:building => [:territory_id, :name, :address, :certificate, :building_passport])
     end
 
     before_action :predefine_territory, only: [:new]
@@ -16,8 +17,6 @@ ActiveAdmin.register Building do
       if t && Territory.exists?(t)
         @building = Building.new()
         @building.territory = Territory.find(t)
-      else
-        @building = Building.new()
       end
     end
   end
@@ -41,6 +40,12 @@ ActiveAdmin.register Building do
     end
     column :address
     column :certificate
+    column t(:territory) do |building|
+      building.territory.name if building.territory
+    end
+    column t(:entity) do |building|
+      building.territory.entity.name if building.territory
+    end
     column :building_income, sortable: false do |building|
       number_to_currency building.building_income
     end
@@ -56,6 +61,7 @@ ActiveAdmin.register Building do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs t("forms.chapters.main") do
       f.input :territory, as: :select
       f.input :name

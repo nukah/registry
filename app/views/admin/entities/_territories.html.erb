@@ -18,7 +18,7 @@
         <td class="col col-name"><%= link_to territory.name, admin_territory_path(territory) %></td>
         <td class="col col-address"><%= territory.address %></td>
         <td class="col col-cad"><%= territory.cad %></td>
-        <td class="col col-space"><%= space_with_metrics(territory.space) %></td>
+        <td class="col col-space"><%= space_with_metrics_hectars(territory.space) %></td>
         <td class="col col-certificate"><%= territory.certificate %></td>
         <td class="col col-files">
           <%= download_links [:license_certificate, :passport_certificate], territory %>

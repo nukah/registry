@@ -7,15 +7,15 @@
 #  address                        :string(255)
 #  certificate                    :string(255)
 #  territory_id                   :integer
-#  created_at                     :datetime
-#  updated_at                     :datetime
 #  building_passport_file_name    :string(255)
 #  building_passport_content_type :string(255)
 #  building_passport_file_size    :integer
 #  building_passport_updated_at   :datetime
 #  total_space                    :integer          default(0)
 #  free_space                     :integer          default(0)
-#  income                         :float
+#  income                         :float            default(0.0)
+#  created_at                     :datetime
+#  updated_at                     :datetime
 #
 # Indexes
 #

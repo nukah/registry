@@ -35,6 +35,7 @@ ActiveAdmin.register Level do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs t("forms.chapters.main") do
       f.input :building, as: :select
       f.input :number

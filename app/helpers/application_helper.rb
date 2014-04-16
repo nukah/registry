@@ -4,6 +4,11 @@ module ApplicationHelper
     space > 0 ? raw(string + "&sup2;") : I18n.t('no_space')
   end
 
+  def space_with_metrics_hectars space
+    string = I18n.t('hectars', count: space)
+    space > 0 ? raw(string) : I18n.t('no_space')
+  end
+
   def download_links fields, model
     if fields.is_a?(Array)
       raw fields.map { |file|

@@ -2,21 +2,17 @@
 #
 # Table name: contracts
 #
-#  id                            :integer          not null, primary key
-#  number                        :integer
-#  rate                          :float
-#  room_id                       :integer
-#  leaser_id                     :integer
-#  created_at                    :datetime
-#  updated_at                    :datetime
-#  contract_project_file_name    :string(255)
-#  contract_project_content_type :string(255)
-#  contract_project_file_size    :integer
-#  contract_project_updated_at   :datetime
-#  duration                      :integer          default(0)
-#  sign_date                     :date
-#  status                        :integer          default(0)
-#  income                        :float
+#  id         :integer          not null, primary key
+#  room_id    :integer
+#  leaser_id  :integer
+#  sign_date  :date
+#  status     :integer          default(0)
+#  duration   :integer          default(0)
+#  number     :integer
+#  income     :float            default(0.0)
+#  rate       :float
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Contract < ActiveRecord::Base
