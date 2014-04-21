@@ -23,7 +23,11 @@ class Room < ActiveRecord::Base
   has_one :leaser, through: :contract
 
   def title
-    "#{self.level.building.name.gsub!(/( )/, '-')}_#{self.level.number}_#{self.number}".downcase
+    if self.level && self.level.building
+      "#{self.level.building.name.gsub!(/( )/, '-')}_#{self.level.number}_#{self.number}".downcase
+    else
+      "#{self.number}".downcase
+    end
   end
 
   def self.fields
