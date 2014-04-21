@@ -1,7 +1,14 @@
 ActiveAdmin.register Leaser do
-  menu priority: 15, parent: 'rent', label: I18n.t('page_titles.leaser')
+  menu priority: 15, parent: 'rent', label: I18n.t('page_titles.leasers')
+
   filter :contracts, as: :select
   filter :name, as: :string
+
+  controller do
+    def permitted_params
+      params.permit(:leaser => [:name, :contacts])
+    end
+  end
 
   show do |leaser|
     render 'contracts', contracts: leaser.contracts, leaser: leaser

@@ -58,6 +58,9 @@ ru:
     entity:
       one: Объект
       many: Объекты
+    contract:
+      one: Договор
+      many: Договоры
     contract_attachments: Документы к договору
 
   enumerize:

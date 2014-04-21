@@ -1,5 +1,5 @@
 ActiveAdmin.register Room do
-  menu priority: 14, parent: 'rent', label: I18n.t('page_titles.room')
+  menu priority: 14, parent: 'rent', label: I18n.t('page_titles.rooms')
 
   collection_action :filter_levels, method: :get do
     if params[:building_id]

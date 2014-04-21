@@ -1,6 +1,6 @@
 ActiveAdmin.register Building do
   scope :all, :default => true
-  menu priority: 12, parent: 'rent', label: I18n.t('page_titles.building')
+  menu priority: 12, parent: 'rent', label: I18n.t('page_titles.buildings')
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.level', count: 1)), new_admin_level_path(building: resource.id))
   end

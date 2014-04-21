@@ -1,5 +1,5 @@
 ActiveAdmin.register Purpose do
-  menu priority: 20, parent: 'rent', label: I18n.t('page_titles.purpose')
+  menu priority: 20, parent: 'rent', label: I18n.t('page_titles.purposes')
   config.filters = false
 
   controller do

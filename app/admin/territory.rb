@@ -1,5 +1,5 @@
 ActiveAdmin.register Territory do
-  menu priority: 11, parent: 'rent', label: I18n.t('page_titles.territory')
+  menu priority: 11, parent: 'rent', label: I18n.t('page_titles.territories')
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.building', count: 1)), new_admin_building_path(territory: resource.id))
   end
