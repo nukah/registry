@@ -1,5 +1,5 @@
 ActiveAdmin.register Territory do
-  menu priority: 11, parent: 'rent'
+  menu priority: 11, parent: 'rent', label: I18n.t('menu.territory')
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.building', count: 1)), new_admin_building_path(territory: resource.id))
   end
@@ -30,7 +30,7 @@ ActiveAdmin.register Territory do
     render "buildings", buildings: territory.buildings, territory: territory
   end
 
-  index do
+  index title: I18n.t('page_titles.territories') do
     column :name do |territory|
       link_to territory.name, admin_territory_path(territory)
     end
@@ -39,10 +39,10 @@ ActiveAdmin.register Territory do
     column :space do |territory|
       space_with_metrics_hectars territory.space
     end
-    column t(:entity) do |territory|
+    column t('headers.entity', count: 1) do |territory|
       territory.entity.name
     end
-    column t('headers.buildings') do |territory|
+    column t('headers.building', count: 5) do |territory|
       territory.buildings.size
     end
     column t(:license_certificate) do |territory|
@@ -59,12 +59,12 @@ ActiveAdmin.register Territory do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs t('forms.chapters.main') do
+    f.inputs t('formtastic.titles.main') do
       f.input :entity, as: :select
       f.input :name
       f.input :space
     end
-    f.inputs t('forms.chapters.additional') do
+    f.inputs t('formtastic.titles.additional') do
       f.input :address
       f.input :cad
       f.input :certificate

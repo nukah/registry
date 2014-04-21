@@ -8,31 +8,29 @@ ru:
   rent_menu: Аренда
   admin_menu: Администрирование
   floor_plan: План этажа
-  floors: Этажей
   details: Подробности
-  territories: Земли
-  territory: Земля
-  buildings: Здания
-  building: Здание
-  levels: Этажи
-  level: Этаж
-  contracts: Договора
-  contract: Договор
-  leasers: Арендаторы
-  leaser: Арендатор
-  entities: Объекты
-  entity: Объект
-  rooms: Помещения
   contract_attachment_name: Наименование документа
 
-  form_model_titles:
-    territory: Земля
-    entity: Объект
-    building: Здание
-    contract: Договор
-    leaser: Арендатор
-    room: Помещение
-    level: Этаж
+  page_titles:
+    entities: Объекты
+    territories: Земли
+    buildings: Здания
+    levels: Этажи
+    leasers: Арендаторы
+    rooms: Помещения
+    contracts: Договоры
+    purposes: Назначения
+
+  menu:
+    entity: Объекты
+    territory: Земли
+    building: Здания
+    level: Этажи
+    leaser: Арендаторы
+    room: Помещения
+    contract: Договора
+    purpose: Назначения
+
   active_admin:
     add_model: "Добавить %{model}"
     new_model: "Создать"
@@ -40,6 +38,7 @@ ru:
     create_model: "Создать %{model}"
     update_model: "Изменить %{model}"
     delete_model: "Удалить"
+
   roles:
     admin: Администратор
     user: Пользователь
@@ -48,22 +47,26 @@ ru:
     one: "%{count} метр"
     few: "%{count} метра"
     many: "%{count} метров"
+
   hectars:
     one: "%{count} Га"
     few: "%{count} Га"
     many: "%{count} Га"
 
   headers:
-    territories: Земли
-    buildings: Здания
-    levels: Этажи
+    territory:
+      one: Земля
+      many: Земель
+    building:
+      one: Здание
+      many: Зданий
+    level:
+      one: Этаж
+      many: Этажей
+    entity:
+      one: Объект
+      many: Объекты
     contract_attachments: Документы к договору
-
-  forms:
-    actions: Действия
-    chapters:
-      main: Основное
-      additional: Дополнительное
 
   enumerize:
     contract:
@@ -76,7 +79,9 @@ ru:
   formtastic:
     titles:
       contracts: "Договоры"
-      contract_attachments: Документы к договору
+      contract_attachments: "Документы к договору"
+      main: Основное
+      additional: Дополнительные
 
     labels:
       contract:
@@ -108,45 +113,41 @@ ru:
       territory:
         one: земля
         few: земли
-        many: земель
-        other: Земля
+        other: земель
       room:
         one: помещение
         few: помещения
         many: помещений
-        other: Помещения
+        other: помещений_тест
       purpose:
-        one: Назначение
+        one: назначение
         few: назначения
-        many: назначений
-        other: Назначения
+        other: назначений
       level:
         one: этаж
         few: этажа
-        many: этажи
-        other: Этаж
+        other: этажи
       leaser:
         one: арендатор
         few: арендатора
-        many: арендаторов
-        other: Арендатор
+        other: арендаторов
       entity:
         one: объект
         few: объекта
-        other: Объекты
+        other: объектов
       contract:
         one: договор
         few: договора
-        other: Договора
+        other: договоров
       building:
         one: здание
         few: здания
-        other: Здания
+        many: зданий
+        other: зданий_тест
       contract_attachment:
         one: документ
         few: документа
-        many: документов
-        other: Документы
+        other: документов
     attributes:
       territory:
         name: Название

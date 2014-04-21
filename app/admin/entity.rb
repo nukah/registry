@@ -1,6 +1,6 @@
 ActiveAdmin.register Entity do
   config.filters = false
-  menu priority: 10, parent: 'rent'
+  menu priority: 10, parent: 'rent', label: I18n.t('menu.entity')
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.territory', count: 1)), new_admin_territory_path(entity: resource.id))
   end
@@ -13,7 +13,7 @@ ActiveAdmin.register Entity do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs t('forms.chapters.main')
+    f.inputs t('formtastic.titles.main')
     f.input :name
     f.input :city
     f.actions
@@ -23,12 +23,12 @@ ActiveAdmin.register Entity do
     render "territories", territories: entity.territories, entity: entity
   end
 
-  index do
+  index title: I18n.t('page_titles.entities') do
     column :name do |entity|
       link_to entity.name, admin_entity_path(entity)
     end
     column :city
-    column t('headers.territories') do |entity|
+    column t('headers.territory', count: 5) do |entity|
       entity.territories.size
     end
   end

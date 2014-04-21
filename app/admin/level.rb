@@ -4,6 +4,7 @@ ActiveAdmin.register Level do
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.room', count: 1)), new_admin_room_path(level: resource.id))
   end
+
   controller do
     def permitted_params
       params.permit(:level => [:number, :space, :building_id])
@@ -36,13 +37,13 @@ ActiveAdmin.register Level do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs t("forms.chapters.main") do
+    f.inputs t("formtastic.titles.main") do
       f.input :building, as: :select
       f.input :number
       f.input :space
     end
 
-    f.inputs t("forms.chapters.additional") do
+    f.inputs t("formtastic.titles.additional") do
       f.input :floor_plan, as: :file, hint: f.template.image_tag(f.object.floor_plan.url(:small), class: 'attachment_image')
     end
 

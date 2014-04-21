@@ -30,6 +30,10 @@ class Room < ActiveRecord::Base
     end
   end
 
+  def name
+    "Помещения"
+  end
+
   def self.fields
     %w(number space)
   end

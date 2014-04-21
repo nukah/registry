@@ -1,5 +1,5 @@
 ActiveAdmin.register Purpose do
-  menu priority: 20, parent: 'rent'
+  menu priority: 20, parent: 'rent', label: I18n.t('menu.purpose')
   config.filters = false
 
   controller do
@@ -8,7 +8,7 @@ ActiveAdmin.register Purpose do
     end
   end
 
-  index do
+  index title: I18n.t('page_titles.purposes') do
     column :name
     default_actions
   end

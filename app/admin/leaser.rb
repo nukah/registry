@@ -1,5 +1,5 @@
 ActiveAdmin.register Leaser do
-  menu priority: 15, parent: 'rent'
+  menu priority: 15, parent: 'rent', label: I18n.t('menu.leaser')
   filter :contracts, as: :select
   filter :name, as: :string
 
@@ -7,7 +7,7 @@ ActiveAdmin.register Leaser do
     render 'contracts', contracts: leaser.contracts, leaser: leaser
   end
 
-  index do
+  index title: I18n.t('page_titles.leasers') do
     column :name do |leaser|
       link_to leaser.name, admin_leaser_path(leaser)
     end

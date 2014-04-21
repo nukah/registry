@@ -1,5 +1,17 @@
 ActiveAdmin.register Room do
-  menu priority: 14, parent: 'rent'
+  menu priority: 14, parent: 'rent', label: I18n.t('menu.room')
+
+  collection_action :filter_levels, method: :get do
+    if params[:building_id]
+      building = Building.find(params[:building_id])
+      respond_to do |fmt|
+        fmt.json { render json: building.levels }
+      end
+    else
+      render json: {}
+    end
+  end
+
   controller do
     before_action :predefine_level, only: [:new]
 
@@ -33,14 +45,14 @@ ActiveAdmin.register Room do
         room.level.title if room.level
       end
       row :contract do
-        room.contract if room.contract
-      end
+        room.contract
+      end if room.contract
     end
   end
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs t("forms.chapters.main") do
+    f.inputs t("formtastic.titles.main") do
       f.input :number
       f.input :space
       unless params[:level]
@@ -51,7 +63,7 @@ ActiveAdmin.register Room do
     end
   end
 
-  index do
+  index title: I18n.t('page_titles.rooms') do
     column :number do |room|
       link_to room.number, admin_room_path(room)
     end
@@ -68,7 +80,7 @@ ActiveAdmin.register Room do
       room.level.title if room.level
     end
     column :income do |room|
-      number_to_currency room.contract.income
+      number_to_currency room.contract.income if room.contract
     end
   end
 end
