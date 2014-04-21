@@ -62,7 +62,7 @@ ActiveAdmin.register Room do
       space_with_metrics room.space
     end
     column :leaser do |room|
-      link_to room.leaser.name, admin_leaser_path(room.leaser)
+      link_to room.leaser, admin_leaser_path(room.leaser) if room.leaser
     end
     column :building do |room|
       room.level.title if room.level
