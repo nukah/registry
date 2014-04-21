@@ -1,5 +1,5 @@
 ActiveAdmin.register Room do
-  menu priority: 14, parent: 'rent', label: I18n.t('menu.room')
+  menu priority: 14, parent: 'rent', label: I18n.t('page_titles.room')
 
   collection_action :filter_levels, method: :get do
     if params[:building_id]
@@ -44,9 +44,9 @@ ActiveAdmin.register Room do
       row :level do
         room.level.title if room.level
       end
-      row :contract do
-        room.contract
-      end if room.contract
+      row t('headers.contract', count: 1) do
+        room.contract if room.contract
+      end
     end
   end
 

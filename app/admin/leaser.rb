@@ -1,5 +1,5 @@
 ActiveAdmin.register Leaser do
-  menu priority: 15, parent: 'rent', label: I18n.t('menu.leaser')
+  menu priority: 15, parent: 'rent', label: I18n.t('page_titles.leaser')
   filter :contracts, as: :select
   filter :name, as: :string
 

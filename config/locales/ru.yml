@@ -5,11 +5,13 @@ ru:
   passport_certificate: Кадастровый паспорт
   license_certificate: Свидетельство
   contract_documents: Документы к договору
-  rent_menu: Аренда
-  admin_menu: Администрирование
   floor_plan: План этажа
   details: Подробности
   contract_attachment_name: Наименование документа
+
+  menu:
+    rent: Аренда
+    admin: Администрирование
 
   page_titles:
     entities: Объекты
@@ -20,16 +22,6 @@ ru:
     rooms: Помещения
     contracts: Договоры
     purposes: Назначения
-
-  menu:
-    entity: Объекты
-    territory: Земли
-    building: Здания
-    level: Этажи
-    leaser: Арендаторы
-    room: Помещения
-    contract: Договора
-    purpose: Назначения
 
   active_admin:
     add_model: "Добавить %{model}"

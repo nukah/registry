@@ -216,10 +216,10 @@ ActiveAdmin.setup do |config|
     # Only show XML & PDF options
     #admin.download_links = [:pdf, :xls]
     admin.build_menu :default do |menu|
-      menu.add label: -> { I18n.t('rent_menu') }, priority: 10, id: 'rent'
+      menu.add label: -> { I18n.t('menu.rent') }, priority: 10, id: 'rent'
     end
     admin.build_menu :default do |menu|
-      menu.add label: -> { I18n.t('admin_menu') }, priority: 11, id: 'admin', if: -> { current_admin_user.admin? }
+      menu.add label: -> { I18n.t('menu.admin') }, priority: 11, id: 'admin', if: -> { current_admin_user.admin? }
     end
     # Enable/disable the links based on block
     #   (for example, with cancan)

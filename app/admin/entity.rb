@@ -1,6 +1,6 @@
 ActiveAdmin.register Entity do
   config.filters = false
-  menu priority: 10, parent: 'rent', label: I18n.t('menu.entity')
+  menu priority: 10, parent: 'rent', label: I18n.t('page_titles.entity')
   action_item only: :show do
     link_to(t('active_admin.add_model', model: t('activerecord.models.territory', count: 1)), new_admin_territory_path(entity: resource.id))
   end

@@ -15,8 +15,8 @@
       <tr id="room_<%= room.id %>">
         <td class="col col-number"><%= link_to room.number, admin_room_path(room) %></td>
         <td class="col col-space"><%= space_with_metrics room.space %></td>
-        <td class="col col-leaser"><%= link_to room.leaser.name, admin_leaser_path(room.leaser) %></td>
-        <td class="col col-income"><%= number_to_currency room.contract.income %></td>
+        <td class="col col-leaser"><%= link_to room.leaser, admin_leaser_path(room.leaser) if room.leaser %></td>
+        <td class="col col-income"><%= number_to_currency room.contract.income if room.contract %></td>
       </tr>
       <% end %>
     </tbody>
