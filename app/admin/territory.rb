@@ -4,9 +4,6 @@ ActiveAdmin.register Territory do
     link_to(t('active_admin.add_model', model: t('activerecord.models.building', count: 1)), new_admin_building_path(territory: resource.id))
   end
   controller do
-    def permitted_params
-      params.permit(:territory => [:name, :address, :cad, :space, :certificate, :passport_certificate, :license_certificate, :entity_id])
-    end
     before_action :predefine_entity, only: [:new]
 
     def predefine_entity

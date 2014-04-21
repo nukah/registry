@@ -27,7 +27,7 @@ class Contract < ActiveRecord::Base
   enumerize :status, in: { novel: 0, approval: 1, signed:2, finished: 3 }, default: :novel
   # Доход от аренды помещения
   def title
-    "#{number}"
+    "(#{leaser.name}) #{number}"
   end
 
   def contract_project_download_name

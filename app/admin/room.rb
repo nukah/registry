@@ -14,7 +14,7 @@ ActiveAdmin.register Room do
     end
 
     def permitted_params
-      params.permit(:room => [:number, :space])
+      params.permit(:room => [:number, :space, :level_id])
     end
   end
 
@@ -29,8 +29,12 @@ ActiveAdmin.register Room do
       row :space do
         space_with_metrics room.space
       end
-      row :level
-      row :leaser
+      row :level do
+        room.level.title if room.level
+      end
+      row :contract do
+        room.contract if room.contract
+      end
     end
   end
 
@@ -52,7 +56,7 @@ ActiveAdmin.register Room do
       link_to room.number, admin_room_path(room)
     end
     column :contract_number do |room|
-      link_to room.contract.number, admin_contract_path(room.contract)
+      link_to room.contract.number, admin_contract_path(room.contract) if room.contract
     end
     column :space do |room|
       space_with_metrics room.space
@@ -61,7 +65,7 @@ ActiveAdmin.register Room do
       link_to room.leaser.name, admin_leaser_path(room.leaser)
     end
     column :building do |room|
-      room.level.building.name
+      room.level.title if room.level
     end
     column :income do |room|
       number_to_currency room.contract.income
