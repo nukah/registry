@@ -108,41 +108,47 @@ ru:
       territory:
         one: земля
         few: земли
-        other: земель
+        many: земель
+        other: Земли
       room:
         one: помещение
         few: помещения
         many: помещений
-        other: помещений_тест
+        other: Помещения
       purpose:
         one: назначение
         few: назначения
-        other: назначений
+        many: назначений
+        other: Назначения
       level:
         one: этаж
         few: этажа
-        other: этажи
+        many: этажей
+        other: Этажи
       leaser:
         one: арендатор
         few: арендатора
-        other: арендаторов
+        many: арендаторов
+        other: Арендаторы
       entity:
         one: объект
         few: объекта
-        other: объектов
+        many: объектов
+        other: Объекты
       contract:
         one: договор
         few: договора
-        other: договоров
+        other: Договоры
+        many: договор.
       building:
         one: здание
         few: здания
         many: зданий
-        other: зданий_тест
+        other: Здания
       contract_attachment:
         one: документ
         few: документа
-        other: документов
+        other: Документы
     attributes:
       territory:
         name: Название

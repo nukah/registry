@@ -1,12 +1,12 @@
 <%= semantic_form_for [:admin, @contract], html: {multipart: true}, builder: ActiveAdmin::FormBuilder do |f|
   f.semantic_errors *f.object.errors.keys
-  f.inputs t('forms.chapters.main') do
+  f.inputs t('formtastic.titles.main') do
     f.input :room
     f.input :leaser
     f.input :rate, as: :number
     f.input :number
   end
-  f.inputs t('forms.chapters.additional') do
+  f.inputs t('formtastic.titles.additional') do
     f.input :sign_date, as: :date_select
     f.input :status, as: :select
     f.input :duration, as: :number
